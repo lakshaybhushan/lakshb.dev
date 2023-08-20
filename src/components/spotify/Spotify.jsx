@@ -76,7 +76,7 @@ const SpotifyNowPlaying = (props) => {
           rel="noopener noreferrer"
           target="_blank">
           <div className="flex items-center gap-2.5">
-            <SpotifyLogo className="text-2xl" />
+            <SpotifyLogo className="md:text-2xl text-lg" />
             <p>Lakshay is offline</p>
           </div>
         </Link>

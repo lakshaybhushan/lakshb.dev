@@ -1,5 +1,5 @@
 import "./globals.css";
-import "@/components/utils/custom.css"
+import "@/components/utils/custom.css";
 import { Major_Mono_Display } from "next/font/google";
 
 const majorMonoDisplay = Major_Mono_Display({
@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className="mx-[10vw] mt-[3vh] bg-bgblk text-sm lowercase text-light-main">
+      className="bg-bgblk text-sm lowercase text-light-main md:mx-[10vw] md:mt-[3vh] mx-[2vw] mt-[2vh]">
       <body className={majorMonoDisplay.className}>{children}</body>
     </html>
   );

@@ -8,7 +8,7 @@ const Profile = () => {
         alt="Picture of the author"
         width={400}
         height={500}
-        className="h-full w-[24vw]"
+        className="h-full md:w-[24vw]"
         id="ImageEffect"
       />
     </div>
