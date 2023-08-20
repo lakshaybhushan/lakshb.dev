@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const Untitled = () => {
-  return (
-    <div>Untitled</div>
-  )
-}
+  return <div className="h-12 w-12 bg-light-main absolute" />;
+};
 
-export default Untitled
+export default Untitled;

@@ -1,9 +1,48 @@
-import React from 'react'
-
+import React from "react";
+import Link from "next/link";
 const Socials = () => {
   return (
-    <div>Socials</div>
-  )
-}
+    <div>
+      <div
+        className={`Links flex items-center justify-end gap-x-3 text-sm`}>
+        <Link
+          href="https://twitter.com/bhushanlakshay/"
+          className=""
+          rel="noopener noreferrer"
+          target="_blank">
+          X
+        </Link>
+        <Link
+          href="https://github.com/lakshaybhushan"
+          className=""
+          rel="noopener noreferrer"
+          target="_blank">
+          GitHub
+        </Link>
+        <Link
+          href="https://behance.net/lakshaybhushan/"
+          className=""
+          rel="noopener noreferrer"
+          target="_blank">
+          Behance
+        </Link>
+        <Link
+          href="https://www.linkedin.com/in/lakshaybhushan/"
+          className=""
+          rel="noopener noreferrer"
+          target="_blank">
+          LinkedIn
+        </Link>
+        <Link
+          href="https://www.instagram.com/lakshaybhushan/"
+          className=""
+          rel="noopener noreferrer"
+          target="_blank">
+          Instagram
+        </Link>
+      </div>
+    </div>
+  );
+};
 
-export default Socials
+export default Socials;

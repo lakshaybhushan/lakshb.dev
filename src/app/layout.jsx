@@ -15,7 +15,9 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="bg-bgblk text-light-main text-sm lowercase">
+    <html
+      lang="en"
+      className="mx-[10vw] mt-[3vh] bg-bgblk text-sm lowercase text-light-main">
       <body className={majorMonoDisplay.className}>{children}</body>
     </html>
   );
