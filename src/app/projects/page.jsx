@@ -6,6 +6,7 @@ import FooterOther from "@/components/footer/FooterOther";
 import Projects from "@/components/projects/Showcase/Projects";
 import Header from "@/components/projects/Header";
 import Lenis from "@studio-freight/lenis";
+import {motion} from "framer-motion";
 
 const page = () => {
   useEffect(() => {
@@ -19,13 +20,16 @@ const page = () => {
     requestAnimationFrame(raf);
   }, []);
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1.5 }}>
       <Untitled />
       <Menu />
       <Header />
       <Projects />
       <FooterOther />
-    </>
+    </motion.div>
   );
 };
 

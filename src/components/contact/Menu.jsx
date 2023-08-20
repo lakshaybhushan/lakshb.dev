@@ -2,18 +2,11 @@ import React from "react";
 import Link from "next/link";
 const Menu = () => {
   return (
-    <nav className="flex flex-col items-end gap-y-[3px] text-right md:gap-y-1.5">
+    <nav className="flex flex-col items-end md:gap-y-1.5 gap-y-[3px] text-right">
       <Link
-        href="https://v1.lakshb.me/"
-        className="linkAnime transition-all duration-300 ease-in-out hover:text-white"
-        rel="noopener noreferrer"
-        target="_blank">
-        Version 1.0
-      </Link>
-      <Link
-        href="/projects"
+        href="/"
         className="linkAnime transition-all duration-300 ease-in-out hover:text-white">
-        Projects
+        Home
       </Link>
       <Link
         href="/resume"
@@ -21,9 +14,9 @@ const Menu = () => {
         Resume
       </Link>
       <Link
-        href="/contact"
+        href="/projects"
         className="linkAnime transition-all duration-300 ease-in-out hover:text-white">
-        Contact
+        Projects
       </Link>
     </nav>
   );

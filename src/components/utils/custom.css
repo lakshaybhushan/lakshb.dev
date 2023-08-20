@@ -70,3 +70,8 @@
     padding-right: 2rem;
   }
 }
+
+::selection {
+  background-color: #00dca1;
+  color: #101010;
+}
