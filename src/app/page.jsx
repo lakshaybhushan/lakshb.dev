@@ -4,7 +4,7 @@ import Profile from "@/components/home/Profile";
 import Menu from "@/components/home/Menu";
 import Header from "@/components/home/Header";
 import About from "@/components/home/About";
-import Footer from "@/components/footer/Footer";
+import FooterMain from "@/components/footer/FooterMain";
 
 const page = () => {
   return (
@@ -12,11 +12,9 @@ const page = () => {
       <Untitled />
       <Menu />
       <Header />
-
       <Profile />
       <About />
-
-      <Footer />
+      <FooterMain />
     </main>
   );
 };

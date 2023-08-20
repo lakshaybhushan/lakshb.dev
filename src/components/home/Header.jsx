@@ -1,12 +1,12 @@
-import React from 'react'
+import React from "react";
 
 const Header = () => {
   return (
-    <main className='text-center'>
-        <h1 className='text-4xl'>Lakshay Bhushan</h1>
-        <p className='mt-2 text-light-other'>(Personal Portfolio)</p>
+    <main className="text-center my-[3vh]">
+      <h1 className="text-4xl">Lakshay Bhushan</h1>
+      <p className="text-light-other">(Personal Portfolio)</p>
     </main>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

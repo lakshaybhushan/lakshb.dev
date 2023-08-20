@@ -31,15 +31,15 @@
 }
 
 @media screen and (max-height: 850px) {
-  *{
+  * {
     font-size: 0.8rem;
   }
 
-  .mt-5{
+  .mt-5 {
     margin-top: 0.5rem;
   }
 
-  .mt-2{
+  .mt-2 {
     margin-top: 0.2rem;
   }
 
@@ -47,13 +47,11 @@
     gap: 0.2rem;
   }
 
-  .text-xl{
+  .text-xl {
     font-size: 1.2rem;
     line-height: normal;
   }
   .w-\[24vw\] {
-    width: 24vw;
+    width: 24 vw;
   }
-
-
 }

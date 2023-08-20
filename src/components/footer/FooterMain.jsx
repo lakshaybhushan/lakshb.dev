@@ -2,9 +2,9 @@ import React from "react";
 import Spotify from "../spotify/Spotify";
 import Socials from "../socials/Socials";
 
-const Footer = () => {
+const FooterMain = () => {
   return (
-    <footer className="absolute bottom-[3vh] left-0 w-full flex justify-between items-end px-[10vw]">
+    <footer className="absolute bottom-[3vh] left-0 right-0 flex w-full items-end justify-between px-[10vw]">
       <div className="flex items-end">
         <Spotify />
       </div>
@@ -15,4 +15,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default FooterMain;
