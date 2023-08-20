@@ -2,7 +2,6 @@
   position: relative;
   text-decoration: none;
 }
-
 .linkAnime::before {
   content: "";
   position: absolute;
@@ -52,6 +51,22 @@
     line-height: normal;
   }
   .w-\[24vw\] {
-    width: 24 vw;
+    width: 24vw;
+  }
+}
+
+@media screen and (max-height: 450px) {
+  .md\:absolute {
+    position: relative;
+  }
+
+  .md\:mx-\[10vw\] {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+
+  .md\:px-\[10vw\] {
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }

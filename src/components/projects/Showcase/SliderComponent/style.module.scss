@@ -34,3 +34,46 @@
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  .project {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 20px 40px 20px;
+    border-top: 1px solid;
+    cursor: pointer;
+    transition: all 0.2s;
+    gap: 20px;
+    width: 95%;
+
+    h1 {
+      margin: 0px;
+      font-size: 1.25rem;
+      transition: all 0.4s;
+    }
+
+    p {
+      transition: all 0.4s;
+      font-size: 0.8rem;
+    }
+
+    &:last-of-type {
+      border-bottom: 1px solid;
+    }
+
+    &:hover {
+      opacity: 1;
+
+      h1 {
+        transform: translateX(0px);
+      }
+
+      p {
+        transform: translateX(0px);
+      }
+    }
+  }
+}

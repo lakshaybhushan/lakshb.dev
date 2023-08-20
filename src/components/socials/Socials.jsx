@@ -3,14 +3,7 @@ import Link from "next/link";
 const Socials = () => {
   return (
     <div>
-      <div className="flex items-center justify-end md:gap-x-3 gap-x-5 text-sm text-light-other">
-        <Link
-          href="https://twitter.com/bhushanlakshay/"
-          className="linkAnime transition-all duration-300 ease-in-out hover:text-white"
-          rel="noopener noreferrer"
-          target="_blank">
-          X
-        </Link>
+      <div className="flex items-center justify-end gap-x-3 text-sm text-light-other md:gap-x-5">
         <Link
           href="https://github.com/lakshaybhushan"
           className="linkAnime transition-all duration-300 ease-in-out hover:text-white"
@@ -38,6 +31,13 @@ const Socials = () => {
           rel="noopener noreferrer"
           target="_blank">
           Instagram
+        </Link>
+        <Link
+          href="https://twitter.com/bhushanlakshay/"
+          className="linkAnime transition-all duration-300 ease-in-out hover:text-white"
+          rel="noopener noreferrer"
+          target="_blank">
+          Twitter
         </Link>
       </div>
     </div>

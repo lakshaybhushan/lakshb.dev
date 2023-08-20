@@ -8,7 +8,6 @@ import Image from "next/image";
 
 const projects = [
   {
-
     title: "Pixelverse",
     src: "me.webp",
     color: "#FC9459",
@@ -158,7 +157,7 @@ export default function Projects() {
           variants={scaleAnimation}
           initial="initial"
           animate={active ? "enter" : "closed"}
-          className={styles.modalContainer}>
+          className={`${styles.modalContainer} hidden md:block`}>
           <div
             style={{ top: index * -100 + "%" }}
             className={styles.modalSlider}>
@@ -186,7 +185,8 @@ export default function Projects() {
           className={styles.cursor}
           variants={scaleAnimation}
           initial="initial"
-          animate={active ? "enter" : "closed"}></motion.div>
+          animate={active ? "enter" : "closed"}
+        />
         <motion.div
           ref={cursorLabel}
           variants={scaleAnimation}

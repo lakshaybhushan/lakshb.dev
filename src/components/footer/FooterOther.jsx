@@ -4,11 +4,11 @@ import Socials from "../socials/Socials";
 
 const FooterOther = () => {
   return (
-    <footer className="mb-[3vh] flex w-full items-end justify-between">
-      <div className="flex items-end">
+    <footer className="flex md:flex-row md:mb-[3vh] md:w-full md:items-end md:justify-between flex-col items-center">
+      <div className="my-12 flex items-end md:my-0">
         <Spotify />
       </div>
-      <div className="flex items-end">
+      <div className="flex items-end mb-[2vh] md:mb-0">
         <Socials />
       </div>
     </footer>
