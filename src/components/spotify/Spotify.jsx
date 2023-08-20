@@ -62,9 +62,9 @@ const SpotifyNowPlaying = (props) => {
               />
             )}
             <div className="ml-4 flex flex-col items-start justify-end">
-              <p>{result.title}</p>
+              <p className="text-white">{result.title}</p>
               <div className="flex">
-                <p className="text-light-other">{result.artist}</p>
+                <p>{result.artist}</p>
                 <PlayingAnimation />
               </div>
             </div>

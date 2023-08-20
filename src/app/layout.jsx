@@ -1,4 +1,5 @@
 import "./globals.css";
+import "@/components/utils/custom.css"
 import { Major_Mono_Display } from "next/font/google";
 
 const majorMonoDisplay = Major_Mono_Display({
