@@ -17,6 +17,8 @@ const Menu = () => {
       </Link>
       <Link
         href="/resume"
+        target="_blank"
+        rel="noopener noreferrer"
         className="linkAnime transition-all duration-300 ease-in-out hover:text-white">
         Resume
       </Link>
