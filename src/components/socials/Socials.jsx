@@ -3,7 +3,7 @@ import Link from "next/link";
 const Socials = () => {
   return (
     <div>
-      <div className="flex items-center justify-end gap-x-3 text-sm text-light-other md:gap-x-5">
+      <div className="flex items-center justify-end gap-x-4 text-sm text-light-other md:gap-x-5">
         <Link
           href="https://github.com/lakshaybhushan"
           className="linkAnime transition-all duration-300 ease-in-out hover:text-white"
