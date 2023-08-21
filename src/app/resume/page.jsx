@@ -5,7 +5,7 @@ const page = () => {
   useEffect(() => {
     const isEmbedSupported = "src" in document.createElement("embed");
     if (!isEmbedSupported) {
-      window.location.href = "https://bit.ly/43RKnyN";
+      window.location.href = "https://bit.ly/3YMZiJp";
     }
   }, []);
 
