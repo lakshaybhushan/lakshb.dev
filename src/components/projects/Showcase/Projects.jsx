@@ -10,49 +10,49 @@ const projects = [
   {
 
     title: "Pixelverse",
-    src: "me.webp",
+    src: "pixelverse.webp",
     color: "#FC9459",
     stack: "React, tailwindcss, HuggingFaceAPI",
     link: "pixelverse.lakshb.me",
   },
   {
     title: "Urlify.",
-    src: "me.webp",
+    src: "urlify.webp",
     color: "#049379",
     stack: "HTML, CSS, JS, BitlyAPI",
     link: "urlify.lakshb.me",
   },
   {
     title: "Greeney.",
-    src: "me.webp",
+    src: "greeney.webp",
     color: "#021C23",
     stack: "JSON",
     link: "greeney.lakshb.me",
   },
   {
     title: "lakshb.me (V1.0)",
-    src: "me.webp",
+    src: "lakshbme.webp",
     color: "#C4DBE0",
     stack: "React, tailwindcss, Vite, Netlify",
     link: "v1.lakshb.me",
   },
   {
     title: "Design Hall",
-    src: "me.webp",
+    src: "designhall.webp",
     color: "#53FFA3",
     stack: "HTML, CSS, JS",
     link: "designhall.lakshb.me",
   },
   {
     title: "Tank Stars",
-    src: "me.webp",
+    src: "tankstars.webp",
     color: "#FFBA52",
     stack: "Java, libGDX",
     link: "github.com/lakshaybhushan/tankstars",
   },
   {
     title: "Cabco",
-    src: "me.webp",
+    src: "cabco.webp",
     color: "#FFD23C",
     stack: "Python. Tkinter, MySQL",
     link: "github.com/lakshaybhushan/CabCo-DBMS-Project",
@@ -171,10 +171,10 @@ export default function Projects() {
                   key={`modal_${index}`}>
                   <Image
                     src={`/images/${src}`}
-                    width={300}
+                    width={500}
                     height={0}
                     alt="project Image"
-                    style={{ width: "50%", height: "auto" }}
+                    style={{ width: "80%", height: "auto" }}
                   />
                 </div>
               );
