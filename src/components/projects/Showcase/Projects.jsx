@@ -33,14 +33,14 @@ const projects = [
     title: "lakshb.me (V1.0)",
     src: "lakshbme.webp",
     color: "#C4DBE0",
-    stack: "React, tailwindcss, Vite, Netlify",
+    stack: "React, tailwindcss, Vite",
     link: "v1.lakshb.me",
   },
   {
     title: "Design Hall",
     src: "designhall.webp",
     color: "#53FFA3",
-    stack: "HTML, CSS, JS",
+    stack: "Next.js, tailwindcss",
     link: "designhall.lakshb.me",
   },
   {
