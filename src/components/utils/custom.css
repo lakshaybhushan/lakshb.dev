@@ -20,15 +20,6 @@
   transform: scaleX(1);
 }
 
-#ImageEffect {
-  filter: saturate(0);
-  transition: all ease 0.8s;
-}
-
-#ImageEffect:hover {
-  filter: saturate(100%);
-}
-
 @media screen and (max-height: 850px) {
   * {
     font-size: 0.8rem;
