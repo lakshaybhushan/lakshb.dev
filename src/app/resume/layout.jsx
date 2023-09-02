@@ -3,7 +3,7 @@ import "../globals.css";
 export const metadata = {
   title: "Lakshay's Resume",
   description: "Lakshay's resume hosted on lakshb.me",
-  url: "https://lakshb.me/",
+  url: "https://lakshb.me/resume",
 };
 
 export default function RootLayout({ children }) {

@@ -10,7 +10,7 @@ const majorMonoDisplay = Major_Mono_Display({
 export const metadata = {
   title: "Lakshay Bhushan",
   description: "My minimal personal website made with Next.js & Tailwind CSS.",
-  url: "https://lakshb.me/resume",
+  url: "https://lakshb.me/",
 };
 
 export default function RootLayout({ children }) {
