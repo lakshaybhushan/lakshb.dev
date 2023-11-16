@@ -5,7 +5,7 @@ const page = () => {
   useEffect(() => {
     const isEmbedSupported = "src" in document.createElement("embed");
     if (!isEmbedSupported) {
-      window.location.href = "https://urlify.lakshb.me/resume-web";
+      window.location.href = "https://urlify.lakshb.me/resume-iiitd";
     }
   }, []);
 
@@ -17,7 +17,7 @@ const page = () => {
       id="pdf-viewer"
       className="absolute inset-0 h-screen w-screen overflow-hidden">
       <embed
-        src="docs/Resume.pdf"
+        src="docs/ResumeIIITD.pdf"
         type="application/pdf"
         width="100%"
         height="100%"
