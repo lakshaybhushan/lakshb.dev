@@ -11,7 +11,7 @@ import {motion} from "framer-motion";
 const page = () => {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.6,
+      duration: 1.2,
     });
     function raf(time) {
       lenis.raf(time);
