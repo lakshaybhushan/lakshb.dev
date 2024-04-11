@@ -29,15 +29,15 @@
   }
 
   30% {
-    transform: scaleY(1);
+    transform: scaleY(0.8);
   }
 
   60% {
-    transform: scaleY(0.5);
+    transform: scaleY(0.4);
   }
 
   80% {
-    transform: scaleY(0.75);
+    transform: scaleY(0.6);
   }
 
   100% {

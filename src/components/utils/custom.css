@@ -20,7 +20,7 @@
   transform: scaleX(1);
 }
 
-@media screen and (max-height: 850px) {
+/* @media screen and (max-height: 850px) {
   * {
     font-size: 0.8rem;
   }
@@ -60,7 +60,7 @@
     padding-left: 2rem;
     padding-right: 2rem;
   }
-}
+} */
 
 ::selection {
   background-color: #00dca1;

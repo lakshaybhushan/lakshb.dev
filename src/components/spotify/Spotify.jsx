@@ -6,7 +6,7 @@ import { SpotifyLogo } from "@/components/utils/spotifyicon";
 import Image from "next/image";
 import Link from "next/link";
 
-const SpotifyNowPlaying = (props) => {
+const SpotifyNowPlaying = ({ client_id, client_secret, refresh_token }) => {
   const [loading, setLoading] = useState(true);
   const [result, setResult] = useState({
     albumImageUrl: "",
@@ -16,72 +16,63 @@ const SpotifyNowPlaying = (props) => {
     title: "No Title",
   });
 
-  const fetchNowPlaying = () => {
-    getNowPlayingItem(
-      props.client_id,
-      props.client_secret,
-      props.refresh_token,
-    ).then((songData) => {
+  useEffect(() => {
+    const fetchNowPlaying = async () => {
+      const songData = await getNowPlayingItem(
+        client_id,
+        client_secret,
+        refresh_token,
+      );
       setResult(songData);
       setLoading(false);
-    });
-  };
-
-  useEffect(() => {
-    fetchNowPlaying();
-
-    const pollingInterval = setInterval(() => {
-      fetchNowPlaying();
-    }, 5000);
-
-    return () => {
-      clearInterval(pollingInterval);
     };
-  }, [props.client_id, props.client_secret, props.refresh_token]);
+
+    fetchNowPlaying();
+    const pollingInterval = setInterval(fetchNowPlaying, 5000);
+
+    return () => clearInterval(pollingInterval);
+  }, [client_id, client_secret, refresh_token]);
+
+  if (loading) {
+    return (
+      <div className="flex items-center gap-2.5">
+        <SpotifyLogo className="text-2xl" />
+        <p>Lakshay is offline</p>
+      </div>
+    );
+  }
+
+  if (result?.isPlaying) {
+    return (
+      <Link href={result.songUrl} rel="noopener noreferrer" target="_blank">
+        <div className="flex">
+          <Image
+            src={result.albumImageUrl || "/nothing.webp"}
+            width={500}
+            height={500}
+            alt="Album Art"
+            className="h-16 w-16 rounded-md"
+          />
+          <div className="ml-4 flex flex-col justify-center">
+            <p className="text-base font-medium text-white">{result.title}</p>
+            <p className="text-sm">{result.artist}</p>
+            <PlayingAnimation />
+          </div>
+        </div>
+      </Link>
+    );
+  }
 
   return (
-    <>
-      {loading ? (
-        <div className="flex items-center gap-2.5">
-          <SpotifyLogo className="text-2xl" />
-          <p>Lakshay is offline</p>
-        </div>
-      ) : result !== null &&
-        result.isPlaying !== undefined &&
-        result.isPlaying ? (
-        <Link href={result.songUrl} rel="noopener noreferrer" target="_blank">
-          <div className="flex">
-            {result.albumImageUrl ? (
-              <img src={result.albumImageUrl} alt="Art" width={55} />
-            ) : (
-              <Image
-                src="/nothing.webp"
-                width={55}
-                height={55}
-                alt="fallbackImage"
-              />
-            )}
-            <div className="ml-4 flex flex-col items-start justify-end">
-              <p className="text-white">{result.title}</p>
-              <div className="flex">
-                <p>{result.artist}</p>
-                <PlayingAnimation />
-              </div>
-            </div>
-          </div>
-        </Link>
-      ) : (
-        <Link
-          href="https://open.spotify.com/user/amcdf5xiittevf5gl1ecjqfyu"
-          rel="noopener noreferrer"
-          target="_blank">
-          <div className="flex items-center gap-2.5">
-            <SpotifyLogo className="md:text-2xl text-lg" />
-            <p>Lakshay is offline</p>
-          </div>
-        </Link>
-      )}
-    </>
+    <Link
+      href="https://open.spotify.com/user/amcdf5xiittevf5gl1ecjqfyu"
+      rel="noopener noreferrer"
+      target="_blank">
+      <div className="flex items-center gap-2.5">
+        <SpotifyLogo className="text-lg md:text-2xl" />
+        <p>Lakshay is offline</p>
+      </div>
+    </Link>
   );
 };
 

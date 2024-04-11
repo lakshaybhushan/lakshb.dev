@@ -3,10 +3,10 @@ import "./PlayingAnimation.css"; // Import the CSS file
 
 const PlayingAnimation = () => {
   return (
-    <div className="playing ml-2">
-      <span className="animated-span" />
-      <span className="animated-span" />
-      <span className="animated-span" />
+    <div className="playing">
+      <span className="animated-span rounded-md" />
+      <span className="animated-span rounded-md" />
+      <span className="animated-span rounded-md" />
     </div>
   );
 };

@@ -39,6 +39,10 @@ export const getNowPlaying = async () => {
       },
     });
 
+    if (response.status === 204) {
+      return null;
+    }
+
     if (!response.ok) {
       throw new Error("Failed to fetch currently playing song");
     }
@@ -54,7 +58,7 @@ export default async function getNowPlayingItem() {
   try {
     const song = await getNowPlaying();
 
-    if (!song || !song.item || !song.item.album) {
+    if (!song) {
       return {
         albumImageUrl: "",
         artist: "No Artist",
@@ -82,3 +86,30 @@ export default async function getNowPlayingItem() {
     return null;
   }
 }
+
+const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks`;
+
+export const getTopTracks = async (time_range = "short_term", limit = 5) => {
+  try {
+    const access_token = await getAccessToken();
+
+    const response = await fetch(
+      `${TOP_TRACKS_ENDPOINT}?time_range=${time_range}&limit=${limit}`,
+      {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      },
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch top tracks");
+    }
+
+    const data = await response.json();
+    return data.items;
+  } catch (error) {
+    console.error("Error in getTopTracks:", error);
+    throw error;
+  }
+};

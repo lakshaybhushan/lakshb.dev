@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 const Menu = () => {
   return (
-    <nav className="flex flex-col items-end gap-y-[3px] text-right md:gap-y-1.5">
+    <nav className="flex flex-col items-end gap-y-[3px] text-right md:gap-y-1.5 mt-[2vh] md:mt-[3vh]">
       <Link
         href="/"
         className="linkAnime transition-all duration-300 ease-in-out hover:text-white">

@@ -1,26 +1,27 @@
-"use client"
+"use client";
 import React from "react";
 import Untitled from "@/components/utils/Untitled";
 import Profile from "@/components/home/Profile";
 import Menu from "@/components/home/Menu";
 import Header from "@/components/home/Header";
-import About from "@/components/home/About";
-import FooterMain from "@/components/footer/FooterMain";
 import { motion } from "framer-motion";
+import { containerVariants, itemVariants } from "@/components/utils/anim";
+import FooterComp from "@/components/footer/Footer";
 
 const page = () => {
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1.5 }}
-    >
-      <Untitled />
-      <Menu />
-      <Header />
-      <Profile />
-      <About />
-      <FooterMain />
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      transition={{ duration: 1.5, delayChildren: 0.5 }}
+      className="flex min-h-screen flex-col">
+      {[Untitled, Menu, Header, Profile].map((Component, index) => (
+        <motion.div variants={itemVariants} key={index}>
+          <Component />
+        </motion.div>
+      ))}
+      <FooterComp />
     </motion.div>
   );
 };

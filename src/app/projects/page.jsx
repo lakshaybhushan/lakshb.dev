@@ -2,11 +2,11 @@
 import React, { useEffect } from "react";
 import Untitled from "@/components/utils/Untitled";
 import Menu from "@/components/projects/Menu";
-import FooterOther from "@/components/footer/FooterOther";
+import FooterOther from "@/components/footer/Footer";
 import Projects from "@/components/projects/Showcase/Projects";
 import Header from "@/components/projects/Header";
 import Lenis from "@studio-freight/lenis";
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
 
 const page = () => {
   useEffect(() => {
