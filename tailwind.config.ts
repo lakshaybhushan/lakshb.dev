@@ -16,8 +16,11 @@ const config: Config = {
         primary: "#FA5A38",
         background: "#F3EEE2",
         dark: "#111111",
-        cardBg: "#F3EEE2",
+        cardBg: "#FFEADA",
         cardBorder: "#DDD8CD",
+      },
+      fontSize: {
+        title: "4rem",
       },
     },
   },

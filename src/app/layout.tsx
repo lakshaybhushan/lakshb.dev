@@ -29,8 +29,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${satoshi.variable} ${voyage.variable} bg-background text-dark`}
-    >
+      className={`${satoshi.variable} ${voyage.variable} bg-background text-dark`}>
       <body>
         <Navbar />
         <main className="mx-40 my-8">{children}</main>
