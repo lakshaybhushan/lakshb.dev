@@ -15,18 +15,17 @@ export default function Home() {
             Creative Developer | Designer | Researcher
           </p>
         </div>
-        <div className="flex flex-col gap-4 pt-8 text-sm">
+        <div className="flex flex-col gap-4 pt-8 text-sm w-5/6">
           <p>
             Hey! I’m Lakshay, a 20 yr old student currently studying cs + social
-            sciences <br /> at IIIT Delhi (India). I make stuff for the{" "}
+            sciences at IIIT Delhi (India). I make stuff for the{" "}
             <span className="font-medium text-primary/90">web</span> and{" "}
-            <span className="font-medium text-primary/90">XR</span>
-            , which is minimal yet
-            <br /> beautifully designed for better user experiences.
+            <span className="font-medium text-primary/90">XR</span>, which is
+            minimal yet beautifully designed for better user experiences.
           </p>
           <p>
             Btw, if you have any cool project ideas, exciting hackathons, or
-            just want <br /> to have fun! Feel free to{" "}
+            just want to have fun! Feel free to{" "}
             <Link
               href="/contact"
               className="font-medium text-primary underline underline-offset-4 transition duration-150 ease-in hover:text-primary/60">
@@ -43,8 +42,8 @@ export default function Home() {
           <Image
             src={me}
             alt="lakshay bhushan's photo"
-            width={365}
-            height={512}
+            width={385}
+            height={532}
             placeholder="blur"
             priority={true}
             className="h-auto w-auto rounded-t-lg"
