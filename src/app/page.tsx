@@ -17,7 +17,7 @@ export default function Home() {
         </div>
         <div className="flex w-5/6 flex-col gap-4 py-6 text-sm">
           <p>
-            Hey! I'm Lakshay, a 20 yr old cs + social sciences student at IIIT
+            Hey! I&apos;m Lakshay, a 20 yr old cs + social sciences student at IIIT
             Delhi (India). Who is passionate about designing user experiences
             through <span className="font-medium text-primary/90"> web </span>{" "}
             and <span className="font-medium text-primary/90"> XR </span>{" "}
@@ -25,7 +25,7 @@ export default function Home() {
             user-friendliness.
           </p>
           <p>
-            I'm always interested in collaborating on innovative projects. Feel
+            I&apos;m always interested in collaborating on innovative projects. Feel
             free to{" "}
             <Link
               href="/contact"
