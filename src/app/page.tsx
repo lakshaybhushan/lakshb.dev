@@ -7,34 +7,36 @@ export default function Home() {
   return (
     <main className="grid grid-cols-2 items-start justify-between">
       <div className="flex flex-col items-start">
-        <div className="flex flex-col gap-4">
-          <h1 className="text-title font-voyage text-primary">
+        <div className="flex flex-col gap-2">
+          <h1 className="font-voyage text-title text-primary">
             Lakshay Bhushan
           </h1>
           <p className="text-lg font-medium text-primary/80">
             Creative Developer | Designer | Researcher
           </p>
         </div>
-        <div className="flex flex-col gap-4 pt-8 text-sm w-5/6">
+        <div className="flex w-5/6 flex-col gap-4 py-6 text-sm">
           <p>
-            Hey! I’m Lakshay, a 20 yr old student currently studying cs + social
-            sciences at IIIT Delhi (India). I make stuff for the{" "}
-            <span className="font-medium text-primary/90">web</span> and{" "}
-            <span className="font-medium text-primary/90">XR</span>, which is
-            minimal yet beautifully designed for better user experiences.
+            Hey! I'm Lakshay, a 20 yr old cs + social sciences student at IIIT
+            Delhi (India). Who is passionate about designing user experiences
+            through <span className="font-medium text-primary/90"> web </span>{" "}
+            and <span className="font-medium text-primary/90"> XR </span>{" "}
+            development, focusing on minimalist aesthetics and
+            user-friendliness.
           </p>
           <p>
-            Btw, if you have any cool project ideas, exciting hackathons, or
-            just want to have fun! Feel free to{" "}
+            I'm always interested in collaborating on innovative projects. Feel
+            free to{" "}
             <Link
               href="/contact"
               className="font-medium text-primary underline underline-offset-4 transition duration-150 ease-in hover:text-primary/60">
-              reach out to me!
-            </Link>
+              reach out
+            </Link>{" "}
+            to discuss potential opportunities or exciting hackathons!
           </p>
-          <div className="pt-4">
-            <CardLayout />
-          </div>
+        </div>
+        <div className="w-5/6 pt-4">
+          <CardLayout />
         </div>
       </div>
       <div className="ml-auto pt-16">

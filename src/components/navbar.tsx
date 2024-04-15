@@ -51,7 +51,7 @@ export default function Navbar() {
                 className={
                   isActive
                     ? "text-primary underline underline-offset-4"
-                    : "transition duration-150 ease-linear hover:text-dark/40"
+                    : "transition duration-150 ease-linear hover:text-primary/80"
                 }>
                 <Link href={link.url}>
                   <p>{link.name}</p>

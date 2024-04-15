@@ -5,6 +5,7 @@ import { FaLinkedinIn } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { BiLogoGmail } from "react-icons/bi";
 import Link from "next/link";
+import NowPlaying from "./nowPlaying";
 
 export default function Footer() {
   const socialLinks = [
@@ -39,9 +40,11 @@ export default function Footer() {
   return (
     <footer className="bottom-0 mt-auto flex w-screen text-sm">
       <div className="mx-16 my-6 w-full">
-        <div className="flex items-center justify-between">
-          <div>*this website is under construction*</div>
-          <div className="flex items-center gap-6">
+        <div className="flex items-end justify-between">
+          <div className="">
+            <NowPlaying />
+          </div>
+          <div className="flex items-end gap-6">
             {socialLinks.map((link, index) => (
               <Link
                 key={index}
