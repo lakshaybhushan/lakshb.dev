@@ -13,11 +13,13 @@ export default function CardLayout() {
       title: "Socials",
       description: "I'm everywhere",
       link: "/socials",
+      openInNewTab: true,
     },
     {
       title: "Resume",
       description: "reasons to hire me in a pdf",
       link: "/resume",
+      openInNewTab: true,
     },
     {
       title: "Ask me anything!",
@@ -25,6 +27,7 @@ export default function CardLayout() {
       link: "/explore",
     },
   ];
+
   return (
     <div>
       <div className="flex h-full items-start">
@@ -42,7 +45,8 @@ export default function CardLayout() {
             <Link
               key={index}
               href={card.link}
-              className="group flex items-center justify-between rounded-lg border border-cardBorder bg-background p-4 text-dark transition-all duration-75 ease-linear hover:border-primary hover:bg-cardBg">
+              className="group flex items-center justify-between rounded-lg border border-cardBorder bg-background p-4 text-dark transition-all duration-75 ease-linear hover:border-primary hover:bg-cardBg"
+              target={card.openInNewTab ? "_blank" : "_self"}>
               <h1 className="text-primary">{card.title}</h1>
               <p className="text-sm text-dark/80 group-hover:text-primary">
                 {card.description}

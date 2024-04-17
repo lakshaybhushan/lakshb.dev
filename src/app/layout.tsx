@@ -36,7 +36,7 @@ export default function RootLayout({
         <section className="flex min-h-screen flex-col">
           <Analytics />
           <Navbar />
-          <main className="mx-40 mt-8">{children}</main>
+          <main className="mx-4 md:mx-14 xl:mx-40 my-8">{children}</main>
           <Footer />
         </section>
       </body>

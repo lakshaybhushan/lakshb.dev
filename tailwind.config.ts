@@ -18,9 +18,14 @@ const config: Config = {
         dark: "#111111",
         cardBg: "#FFEADA",
         cardBorder: "#DDD8CD",
+        inputBg: "#F9F2E5",
+        placeholderText: "#9B9995",
       },
       fontSize: {
         title: "4rem",
+      },
+      animation: {
+        "spin-slow": "spin 14s linear infinite",
       },
     },
   },

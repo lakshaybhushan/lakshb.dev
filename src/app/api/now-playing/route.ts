@@ -4,14 +4,18 @@ import { currentlyPlayingSong } from "@/utils/spotify";
 export async function POST(request: NextRequest) {
   try {
     const response = await currentlyPlayingSong();
+
     if (response.status === 204) {
       return NextResponse.json({ isPlaying: false });
     }
 
-    if (!response.ok) {
+    if (
+      !response.ok ||
+      !response.headers.get("content-type")?.includes("application/json")
+    ) {
       console.error(
         "Failed to fetch currently playing song:",
-        response.statusText,
+        await response.text(),
       );
       return NextResponse.json(
         { error: "Failed to fetch currently playing song" },

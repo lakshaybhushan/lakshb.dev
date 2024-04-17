@@ -6,3 +6,12 @@
   background-color: #fa5a38;
   color: #f3eee2;
 }
+
+:focus {
+  outline: none;
+  box-shadow: 0 0 0 1px #fa5a38;
+}
+
+:focus:not(:focus-visible) {
+  box-shadow: none;
+}

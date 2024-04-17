@@ -12,8 +12,8 @@ export default function Explore() {
         </div>
         <div className="flex w-5/6 flex-col gap-4 pt-6 text-sm">
           <p>
-            I&apos;m always up for trying new stuff, and AI is all over the place
-            these days. So, I figured, why not create something cool and
+            I&apos;m always up for trying new stuff, and AI is all over the
+            place these days. So, I figured, why not create something cool and
             personal with it?
           </p>
         </div>
@@ -28,7 +28,7 @@ export default function Explore() {
             14, Tailwind CSS, and TypeScript for development.
           </p>
         </div>
-        <div className="flex w-5/6 flex-col gap-4 text-sm">
+        <div className="flex w-5/6 flex-col gap-5 text-sm">
           <h2 className="text-lg font-medium text-primary">
             My top tracks this month (Spotify)
           </h2>
@@ -43,6 +43,9 @@ export default function Explore() {
             me irl :D
           </p>
         </div> */}
+
+       under development 
+
       </div>
     </main>
   );
