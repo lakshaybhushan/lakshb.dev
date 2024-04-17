@@ -10,7 +10,7 @@ export default function Contact() {
         <div className="flex flex-col gap-2">
           <h1 className="font-voyage text-title text-primary">Contact</h1>
           <p className="text-lg font-medium text-primary/80">
-            Let's have a little chat, shall we?
+            Let&apos;s have a little chat, shall we?
           </p>
         </div>
         <Toaster richColors position="top-center"/>
