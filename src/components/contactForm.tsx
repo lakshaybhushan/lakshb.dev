@@ -22,7 +22,7 @@ export default function ContactForm() {
 
   return (
     <form
-      className="flex w-5/6 flex-col gap-1 pt-6 text-sm"
+      className="flex w-3/5 flex-col gap-1 pt-6 text-sm"
       onSubmit={handleSubmit}>
       <input
         type="text"
@@ -63,7 +63,7 @@ export default function ContactForm() {
             ? "transition duration-150 ease-linear hover:bg-primary/60"
             : "cursor-not-allowed"
         }`}>
-        Send
+        {state.submitting ? "Sending..." : "Send"}
       </button>
     </form>
   );

@@ -37,14 +37,14 @@ export default function MonthlyTopTracks() {
 
   return (
     <div>
-      <div className="flex h-full items-start">
-        <div className="mr-6">
+      <div className="flex h-80 items-start">
+        <div className="mr-6 h-full">
           <Image
             src={line}
             alt="gradient line"
             width={286}
-            height={12}
-            className="h-full w-full"
+            height={1}
+            className="w-full h-full object-contain"
           />
         </div>
         <div className="flex h-full w-full flex-col gap-1">

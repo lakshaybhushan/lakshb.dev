@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import Navbar from "@/components/navbar";
-import Footer from "@/components/footer";
-import { Analytics } from "@vercel/analytics/react";
+// import Navbar from "@/components/navbar";
+// import Footer from "@/components/footer";
+// import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 
 const satoshi = localFont({
@@ -34,10 +34,11 @@ export default function RootLayout({
       className={`${satoshi.variable} ${voyage.variable} bg-background text-dark`}>
       <body>
         <section className="flex min-h-screen flex-col">
-          <Analytics />
-          <Navbar />
-          <main className="mx-4 md:mx-14 xl:mx-40 my-8">{children}</main>
-          <Footer />
+          {/* <Analytics /> */}
+          {/* <Navbar /> */}
+          {/* <main className="mx-40 mt-4 mb-8">{children}</main> */}
+          <main className="">{children}</main>
+          {/* <Footer /> */}
         </section>
       </body>
     </html>
