@@ -1,0 +1,56 @@
+---
+import { AstroFont } from "astro-font";
+
+interface Props {
+	title: string;
+}
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="bg-bg">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<AstroFont
+			config={[
+				{
+					name: "AppleGaramond",
+					src: [
+						{
+							style: "normal",
+							weight: "400",
+							path: "./public/fonts/AppleGaramond.ttf",
+						},
+					],
+					preload: true,
+					display: "swap",
+					selector: "body",
+					fallback: "serif",
+				},
+
+				{
+					name: "Satoshi",
+					src: [
+						{
+							style: "normal",
+							weight: "400 500 600 700 800 900",
+							path: "./public/fonts/Satoshi-Variable.woff2",
+						},
+					],
+					preload: true,
+					display: "swap",
+					selector: "body",
+					fallback: "sans-serif",
+				},
+			]}
+		/>
+	</head>
+	<body class="mx-auto my-16 max-w-[330px] text-body md:max-w-[470px]">
+		<slot />
+	</body>
+</html>

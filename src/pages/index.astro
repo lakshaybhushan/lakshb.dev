@@ -1,0 +1,69 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { RiArrowRightUpLine } from "react-icons/ri";
+---
+
+<Layout title="Lakshay Bhushan">
+	<main>
+		<h1 class="font-serif text-[2rem] tracking-tight text-primary">
+			Lakshay Bhushan
+		</h1>
+		<div class="flex items-center gap-1.5 font-serif tracking-tight">
+			<h2 class="text-[1rem] text-title">designer</h2>
+			<div class="mt-1.5 h-1 w-1 rounded bg-title"></div>
+			<h2 class="text-[1rem] text-title">developer</h2>
+			<div class="mt-1.5 h-1 w-1 rounded bg-title"></div>
+			<h2 class="text-[1rem] text-title">researcher</h2>
+		</div>
+
+		<p class="pt-4 font-sans text-[0.875rem] font-normal">
+			Hi there, I'm Lakshay, a 20 y/o CS undergrad student at IIIT Delhi. I love
+			creating cool stuff in extended reality and web development. I'm also a
+			designer, passionate about web and mobile UI design, posters, and 3D
+			models, with a minimalist touch. When I'm not coding, I'm diving into
+			research and new ideas.
+		</p>
+
+		<div
+			class="flex w-fit flex-col items-start gap-1 pt-4 font-serif tracking-tight">
+			<a
+				href="https://github.com/lakshaybhushan"
+				rel="noopener noreferrer"
+				target="_blank"
+				class="group flex items-center underline-offset-4 transition duration-150 ease-in-out hover:text-primary hover:underline">
+				<span>github</span>
+				<RiArrowRightUpLine
+					className="opacity-0 transition-opacity duration-150 group-hover:opacity-100"
+				/>
+			</a>
+			<a
+				href="https://linkedin.com/in/lakshaybhushan"
+				rel="noopenner noreferrer"
+				target="_blank"
+				class="group flex items-center underline-offset-4 transition duration-150 ease-in-out hover:text-primary hover:underline">
+				<span>linkedin</span>
+				<RiArrowRightUpLine
+					className="opacity-0 transition-opacity duration-150 group-hover:opacity-100"
+				/>
+			</a>
+			<a
+				href="https://x.com/blakssh"
+				rel="noopenner noreferrer"
+				target="_blank"
+				class="group flex items-center underline-offset-4 transition duration-150 ease-in-out hover:text-primary hover:underline">
+				<span>twitter</span>
+				<RiArrowRightUpLine
+					className="opacity-0 transition-opacity duration-150 group-hover:opacity-100"
+				/>
+			</a>
+			<a
+				href="mailto:lakshaybhushan2403@gmail.com"
+				class="group flex items-center underline-offset-4 transition duration-150 ease-in-out hover:text-primary hover:underline">
+				<span>email</span>
+				<RiArrowRightUpLine
+					className="opacity-0 transition-opacity duration-150 group-hover:opacity-100"
+				/>
+			</a>
+		</div>
+	</main>
+</Layout>
