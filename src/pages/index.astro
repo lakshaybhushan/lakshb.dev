@@ -1,6 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { RiArrowRightUpLine } from "react-icons/ri";
+import ProjectCard from "../components/Card.tsx";
+import projectsData from "../components/data/projects.json";
+
+const projects = projectsData;
 ---
 
 <Layout title="Lakshay Bhushan">
@@ -9,11 +13,11 @@ import { RiArrowRightUpLine } from "react-icons/ri";
 			Lakshay Bhushan
 		</h1>
 		<div class="flex items-center gap-1.5 font-serif tracking-tight">
-			<h2 class="text-[1rem] text-title">designer</h2>
+			<h2 class="text-base text-title">designer</h2>
 			<div class="mt-1.5 h-1 w-1 rounded bg-title"></div>
-			<h2 class="text-[1rem] text-title">developer</h2>
+			<h2 class="text-base text-title">developer</h2>
 			<div class="mt-1.5 h-1 w-1 rounded bg-title"></div>
-			<h2 class="text-[1rem] text-title">researcher</h2>
+			<h2 class="text-base text-title">researcher</h2>
 		</div>
 
 		<p class="pt-4 font-sans text-[0.875rem] font-normal">
@@ -25,7 +29,7 @@ import { RiArrowRightUpLine } from "react-icons/ri";
 		</p>
 
 		<div
-			class="flex w-fit flex-col items-start gap-1 pt-4 font-serif tracking-tight">
+			class="flex w-fit flex-col items-start gap-0.5 pt-4 font-serif tracking-tight">
 			<a
 				href="https://github.com/lakshaybhushan"
 				rel="noopener noreferrer"
@@ -64,6 +68,22 @@ import { RiArrowRightUpLine } from "react-icons/ri";
 					className="opacity-0 transition-opacity duration-150 group-hover:opacity-100"
 				/>
 			</a>
+		</div>
+
+		<section class="pt-8">
+			<h2 class="font-serif text-base tracking-tight text-title">Projects</h2>
+			<div class="pt-1.5">
+				{projects.map((project) => <ProjectCard project={project} />)}
+			</div>
+		</section>
+
+		<div class="flex w-full items-center justify-center pt-8">
+			<img
+				src="/Signature.svg"
+				alt="lakshay's signature"
+				width="108"
+				height="56.04"
+			/>
 		</div>
 	</main>
 </Layout>

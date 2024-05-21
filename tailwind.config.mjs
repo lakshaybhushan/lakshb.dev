@@ -10,7 +10,7 @@ export default {
 				serif: ["AppleGaramond", ...defaultTheme.fontFamily.serif],
 			},
 			colors: {
-				bg: "#F6F4EF",
+				cream: "#F6F4EF",
 				primary: "#FA5A38",
 				title: "#535353",
 				body: "#666",
