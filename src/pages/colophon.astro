@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import SpotifyNowPlaying from "../components/Spotify.tsx";
 ---
 
 <Layout title="Lakshay Bhushan | Colophon">
@@ -15,13 +16,18 @@ import Layout from "../layouts/Layout.astro";
 			>Vercel</span
 		>, and designed in <span class="text-black">Figma</span>. Plus, it&apos;s <span
 			class="text-black">eco-friendly</span
-		>, producing only <span class="text-black">0.07g of CO2</span> every time someone
-		visits.
+		>, producing only <a
+			href="https://www.websitecarbon.com/website/lakshaybhushan-vercel-app/"
+			rel="noopenner noreferrer"
+			target="_blank"
+			class="text-black underline-offset-4 transition duration-150 ease-in-out hover:text-primary hover:underline"
+			>0.07g of CO2</a
+		> every time someone visits.
 	</p>
 
 	<section>
 		<h2 class="pt-8 font-serif text-base tracking-tight text-title">Fonts</h2>
-		<ul class="list-disc px-[0.875rem] pt-4">
+		<ul class="list-disc px-4 pt-4">
 			<li class="text-[0.875rem]">
 				<span class="text-black">Apple Garamond</span> — for headings and titles.
 			</li>
@@ -68,7 +74,7 @@ import Layout from "../layouts/Layout.astro";
 		<h2 class="pt-8 font-serif text-base tracking-tight text-title">
 			Personal Stack
 		</h2>
-		<ul class="list-disc px-[0.875rem] pt-4 text-[0.875rem] text-body">
+		<ul class="list-disc px-4 pt-4 text-[0.875rem] text-body">
 			<li>
 				<span class="text-black">Arc</span> — A better way to browse the web.
 			</li>
@@ -91,6 +97,15 @@ import Layout from "../layouts/Layout.astro";
 				<span class="text-black">iTerm2</span> — Better terminal for MacOS.
 			</li>
 		</ul>
-		<p class="pt-2">and many more...</p>
+		<p class="pt-2 text-[0.875rem]">and many more...</p>
+	</section>
+
+	<section>
+		<h2 class="pt-8 font-serif text-base tracking-tight text-title">
+			Now Playing
+		</h2>
+		<div class="pt-4">
+			<SpotifyNowPlaying client:visible />
+		</div>
 	</section>
 </Layout>

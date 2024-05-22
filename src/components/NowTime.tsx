@@ -63,7 +63,7 @@ const NowTime: React.FC = () => {
 
 	return (
 		<div className="flex items-center gap-2">
-			<div>{renderSvg()}</div>
+			<div className="animate-pulse">{renderSvg()}</div>
 			{time && (
 				<span className="text-xs text-body transition duration-150">
 					{location}, {time.format("h")}
