@@ -4,15 +4,14 @@ import SpotifyNowPlaying from "../components/Spotify.tsx";
 ---
 
 <Layout title="Lakshay Bhushan | Colophon">
-	<h1
-		class="font-heading text-[2rem] font-semibold tracking-tight text-primary">
+	<h1 class="text-[2rem] font-bold tracking-tight text-primary">
 		Colophon
 	</h1>
-	<h2 class="font-heading text-base tracking-tighter text-title">
+	<h2 class="text-base font-medium tracking-tight text-title">
 		/&#712;kɒləfən/ — a brief statement at a book's end detailing its
 		production.
 	</h2>
-	<p class="pt-4 font-sans text-sm font-normal text-body">
+	<p class="pt-4 text-sm font-normal text-body">
 		Basically, it&apos;s a fancy word that I&apos;m using to describe this
 		website. This site is crafted with <span class="text-black">Astro</span> and
 		<span class="text-black">React</span>, hosted on <span class="text-black"
@@ -28,10 +27,8 @@ import SpotifyNowPlaying from "../components/Spotify.tsx";
 		> every time someone visits.
 	</p>
 
-	<section>
-		<h2 class="font-heading pt-8 text-base tracking-tighter text-title">
-			Fonts
-		</h2>
+	<!-- <section>
+		<h2 class="pt-8  text-base tracking-tight text-title">Fonts</h2>
 		<ul class="list-disc px-4 pt-4">
 			<li class="text-sm">
 				<span class="text-black">SF Pro</span> — for headings and titles.
@@ -40,13 +37,13 @@ import SpotifyNowPlaying from "../components/Spotify.tsx";
 				<span class="text-black">Satoshi</span> — for body text.
 			</li>
 		</ul>
-	</section>
+	</section> -->
 
 	<section>
-		<h2 class="font-heading pt-8 text-base tracking-tighter text-title">
+		<h2 class="pt-8 text-base font-medium tracking-tight text-title">
 			Inspiration
 		</h2>
-		<p class="pt-4 font-sans text-sm font-normal">
+		<p class="pt-4 text-sm font-normal">
 			This website is heavily inspired by the works of <a
 				href="https://cassandratang.com"
 				rel="noopenner noreferrer"
@@ -76,7 +73,7 @@ import SpotifyNowPlaying from "../components/Spotify.tsx";
 	</section>
 
 	<section>
-		<h2 class="font-heading pt-8 text-base tracking-tighter text-title">
+		<h2 class="pt-8 text-base font-medium tracking-tight text-title">
 			Personal Stack
 		</h2>
 		<ul class="list-disc px-4 pt-4 text-sm text-body">
@@ -106,10 +103,10 @@ import SpotifyNowPlaying from "../components/Spotify.tsx";
 	</section>
 
 	<section>
-		<h2 class="font-heading pt-8 text-base tracking-tighter text-title">
+		<h2 class="pt-8 text-base font-medium tracking-tight text-title">
 			Now Playing
 		</h2>
-		<div class="pt-4 w-fit">
+		<div class="w-fit pt-4">
 			<SpotifyNowPlaying client:visible />
 		</div>
 	</section>

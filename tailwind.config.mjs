@@ -7,13 +7,12 @@ export default {
 		extend: {
 			fontFamily: {
 				sans: ["Satoshi", ...defaultTheme.fontFamily.sans],
-				heading: ["SF-Pro", "sans-serif"],
 			},
 			colors: {
 				primary: "#00997E",
 				title: "#535353",
 				body: "#666",
-				hoverColor: "#E1FFEF",
+				hoverColor: "#DEFFEB",
 			},
 		},
 	},

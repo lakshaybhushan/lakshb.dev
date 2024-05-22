@@ -11,7 +11,7 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="bg-slate-100">
+<html lang="en" class="bg-[#FDFFF4]">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
@@ -21,21 +21,6 @@ const { title } = Astro.props;
 		<title>{title}</title>
 		<AstroFont
 			config={[
-				{
-					name: "SF-Pro",
-					src: [
-						{
-							style: "normal",
-							weight: "400 500 600 700 800 900",
-							path: "./public/fonts/SF-Pro.ttf",
-						},
-					],
-					preload: true,
-					display: "swap",
-					selector: "body",
-					fallback: "sans-serif",
-				},
-
 				{
 					name: "Satoshi",
 					src: [

@@ -10,12 +10,10 @@ const projects = projectsData;
 
 <Layout title="Lakshay Bhushan">
 	<main>
-		<h1
-			class="font-heading text-[2rem] font-semibold tracking-tight text-primary">
+		<h1 class="text-[2rem] font-bold tracking-tight text-primary">
 			Lakshay Bhushan
 		</h1>
-		<div
-			class="font-heading flex items-center gap-1.5 font-medium tracking-tighter">
+		<div class="flex items-center gap-1.5 font-medium tracking-tight">
 			<h2 class="text-base text-title">designer</h2>
 			<div class="mt-1.5 h-1 w-1 rounded bg-title"></div>
 			<h2 class="text-base text-title">developer</h2>
@@ -23,7 +21,7 @@ const projects = projectsData;
 			<h2 class="text-base text-title">researcher</h2>
 		</div>
 
-		<p class="pt-4 font-sans text-sm font-normal">
+		<p class="pt-4 text-sm">
 			Hi there, I'm Lakshay, a 20 y/o CS undergrad student at IIIT Delhi. I love
 			creating cool stuff in <span class="text-black">extended reality</span> and
 			<span class="text-black">web development</span>. I'm also a designer,
@@ -32,8 +30,7 @@ const projects = projectsData;
 			ideas.
 		</p>
 
-		<div
-			class="font-heading flex w-fit flex-col items-start gap-0.5 pt-4 tracking-tight">
+		<div class="flex w-fit flex-col items-start gap-0.5 pt-4 tracking-tight">
 			<a
 				href="/resume"
 				target="_self"
@@ -76,13 +73,11 @@ const projects = projectsData;
 		</div>
 
 		<section class="pt-8">
-			<h2 class="font-heading font-medium tracking-tighter text-title">
-				Projects
-			</h2>
+			<h2 class="font-medium tracking-tight text-title">Projects</h2>
 			<div class="pt-1.5">
 				{projects.map((project) => <ProjectCard project={project} />)}
 			</div>
-			<p class="group pt-1.5 font-sans text-sm text-body/80">
+			<p class="group pt-1.5 text-sm text-body/80">
 				<PiLightbulbBold
 					className="-mt-0.5 inline-block transition duration-150 ease-in-out group-hover:text-primary"
 				/>
@@ -91,7 +86,7 @@ const projects = projectsData;
 					href="https://github.com/lakshaybhushan"
 					rel="noopenner noreferrer"
 					target="_blank"
-					class="text-black underline-offset-4 transition duration-150 ease-in-out hover:text-primary hover:underline"
+					class="underline-offset-4 transition duration-150 ease-in-out hover:text-primary hover:underline"
 					>GitHub</a
 				> for more projects. Most of them are open-source.
 			</p>

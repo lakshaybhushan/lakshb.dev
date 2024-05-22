@@ -63,10 +63,10 @@ const SpotifyNowPlaying: React.FC = () => {
 							/>
 						)}
 						<div className="ml-3 mt-1 flex flex-col items-start justify-center">
-							<h3 className="font-sans text-xs font-medium text-black underline-offset-4 transition duration-150 ease-in-out hover:text-primary hover:underline">
+							<h3 className=" text-xs font-medium text-black underline-offset-4 transition duration-150 ease-in-out hover:text-primary hover:underline">
 								{result.title}
 							</h3>
-							<p className="font-sans text-xs text-black underline-offset-4 transition duration-150 ease-in-out hover:text-primary hover:underline">
+							<p className=" text-xs text-black underline-offset-4 transition duration-150 ease-in-out hover:text-primary hover:underline">
 								{result.artist}
 							</p>
 						</div>
