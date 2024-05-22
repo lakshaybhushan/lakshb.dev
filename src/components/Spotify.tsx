@@ -40,7 +40,7 @@ const SpotifyNowPlaying: React.FC = () => {
 	return (
 		<>
 			{loading ? (
-				<div className="flex items-center gap-2 text-[0.875rem] text-body underline-offset-4 transition duration-300 ease-in-out hover:text-primary hover:underline">
+				<div className="flex items-center gap-2 text-sm text-body underline-offset-4 transition duration-300 ease-in-out hover:text-primary hover:underline">
 					<FaSpotify />
 					<span>Not listening to spotify</span>
 				</div>
@@ -63,10 +63,10 @@ const SpotifyNowPlaying: React.FC = () => {
 							/>
 						)}
 						<div className="ml-3 mt-1 flex flex-col items-start justify-center">
-							<h3 className="font-sans text-[0.75rem] font-medium text-black">
+							<h3 className="font-sans text-xs font-medium text-black underline-offset-4 transition duration-150 ease-in-out hover:text-primary hover:underline">
 								{result.title}
 							</h3>
-							<p className="font-sans text-[0.75rem] text-black">
+							<p className="font-sans text-xs text-black underline-offset-4 transition duration-150 ease-in-out hover:text-primary hover:underline">
 								{result.artist}
 							</p>
 						</div>
@@ -77,7 +77,7 @@ const SpotifyNowPlaying: React.FC = () => {
 					href="https://open.spotify.com/user/amcdf5xiittevf5gl1ecjqfyu"
 					rel="noopener noreferrer"
 					target="_blank">
-					<div className="flex items-center gap-2 text-[0.875rem] text-body underline-offset-4 transition duration-300 ease-in-out hover:text-primary hover:underline">
+					<div className="flex items-center gap-2 text-sm text-body underline-offset-4 transition duration-300 ease-in-out hover:text-primary hover:underline">
 						<FaSpotify />
 						<span>Not listening to spotify</span>
 					</div>

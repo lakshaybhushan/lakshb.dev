@@ -4,12 +4,15 @@ import SpotifyNowPlaying from "../components/Spotify.tsx";
 ---
 
 <Layout title="Lakshay Bhushan | Colophon">
-	<h1 class="font-serif text-[2rem] tracking-tight text-primary">Colophon</h1>
-	<h2 class="font-serif text-base tracking-tight text-title">
+	<h1
+		class="font-heading text-[2rem] font-semibold tracking-tight text-primary">
+		Colophon
+	</h1>
+	<h2 class="font-heading text-base tracking-tighter text-title">
 		/&#712;kɒləfən/ — a brief statement at a book's end detailing its
 		production.
 	</h2>
-	<p class="pt-4 font-sans text-[0.875rem] font-normal text-body">
+	<p class="pt-4 font-sans text-sm font-normal text-body">
 		Basically, it&apos;s a fancy word that I&apos;m using to describe this
 		website. This site is crafted with <span class="text-black">Astro</span> and
 		<span class="text-black">React</span>, hosted on <span class="text-black"
@@ -26,22 +29,24 @@ import SpotifyNowPlaying from "../components/Spotify.tsx";
 	</p>
 
 	<section>
-		<h2 class="pt-8 font-serif text-base tracking-tight text-title">Fonts</h2>
+		<h2 class="font-heading pt-8 text-base tracking-tighter text-title">
+			Fonts
+		</h2>
 		<ul class="list-disc px-4 pt-4">
-			<li class="text-[0.875rem]">
-				<span class="text-black">Apple Garamond</span> — for headings and titles.
+			<li class="text-sm">
+				<span class="text-black">SF Pro</span> — for headings and titles.
 			</li>
-			<li class="text-[0.875rem]">
+			<li class="text-sm">
 				<span class="text-black">Satoshi</span> — for body text.
 			</li>
 		</ul>
 	</section>
 
 	<section>
-		<h2 class="pt-8 font-serif text-base tracking-tight text-title">
+		<h2 class="font-heading pt-8 text-base tracking-tighter text-title">
 			Inspiration
 		</h2>
-		<p class="pt-4 font-sans text-[0.875rem] font-normal">
+		<p class="pt-4 font-sans text-sm font-normal">
 			This website is heavily inspired by the works of <a
 				href="https://cassandratang.com"
 				rel="noopenner noreferrer"
@@ -71,10 +76,10 @@ import SpotifyNowPlaying from "../components/Spotify.tsx";
 	</section>
 
 	<section>
-		<h2 class="pt-8 font-serif text-base tracking-tight text-title">
+		<h2 class="font-heading pt-8 text-base tracking-tighter text-title">
 			Personal Stack
 		</h2>
-		<ul class="list-disc px-4 pt-4 text-[0.875rem] text-body">
+		<ul class="list-disc px-4 pt-4 text-sm text-body">
 			<li>
 				<span class="text-black">Arc</span> — A better way to browse the web.
 			</li>
@@ -97,14 +102,14 @@ import SpotifyNowPlaying from "../components/Spotify.tsx";
 				<span class="text-black">iTerm2</span> — Better terminal for MacOS.
 			</li>
 		</ul>
-		<p class="pt-2 text-[0.875rem]">and many more...</p>
+		<p class="pt-2 text-sm">and many more...</p>
 	</section>
 
 	<section>
-		<h2 class="pt-8 font-serif text-base tracking-tight text-title">
+		<h2 class="font-heading pt-8 text-base tracking-tighter text-title">
 			Now Playing
 		</h2>
-		<div class="pt-4">
+		<div class="pt-4 w-fit">
 			<SpotifyNowPlaying client:visible />
 		</div>
 	</section>

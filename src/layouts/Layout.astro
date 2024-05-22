@@ -11,7 +11,7 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="bg-cream">
+<html lang="en" class="bg-slate-100">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
@@ -22,18 +22,18 @@ const { title } = Astro.props;
 		<AstroFont
 			config={[
 				{
-					name: "AppleGaramond",
+					name: "SF-Pro",
 					src: [
 						{
 							style: "normal",
-							weight: "400",
-							path: "./public/fonts/AppleGaramond.ttf",
+							weight: "400 500 600 700 800 900",
+							path: "./public/fonts/SF-Pro.ttf",
 						},
 					],
 					preload: true,
 					display: "swap",
 					selector: "body",
-					fallback: "serif",
+					fallback: "sans-serif",
 				},
 
 				{
@@ -54,7 +54,7 @@ const { title } = Astro.props;
 		/>
 	</head>
 	<body
-		class="mx-auto my-16 max-w-[330px] px-4 text-body selection:bg-hoverColor selection:text-primary md:max-w-[470px]">
+		class="mx-auto my-8 max-w-[400px] px-4 text-body selection:bg-hoverColor selection:text-primary md:my-16 md:max-w-[600px]">
 		<Nav />
 		<slot />
 		<Footer />
