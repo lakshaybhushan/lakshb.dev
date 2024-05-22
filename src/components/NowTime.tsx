@@ -40,7 +40,16 @@ const NowTime: React.FC = () => {
 						src="/icons/Afternoon.svg"
 						alt="Afternoon Icon"
 						width={12}
-						height={12}
+						height={13}
+					/>
+				);
+			case "evening":
+				return (
+					<img
+						src="/icons/Evening.svg"
+						alt="Evening Icon"
+						width={12}
+						height={13}
 					/>
 				);
 			case "night":
