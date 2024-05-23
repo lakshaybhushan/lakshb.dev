@@ -9,6 +9,7 @@ export default {
 				sans: ["Satoshi", ...defaultTheme.fontFamily.sans],
 			},
 			colors: {
+				bgColor: "#FDFFF4",
 				primary: "#00997E",
 				title: "#535353",
 				body: "#666",

@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { RiArrowRightUpLine } from "react-icons/ri";
-import { PiLightbulbBold } from "react-icons/pi";
+import { PiLightbulbFill } from "react-icons/pi";
 import ProjectCard from "../components/Card.tsx";
 import projectsData from "../components/data/projects.json";
 
@@ -78,7 +78,7 @@ const projects = projectsData;
 				{projects.map((project) => <ProjectCard project={project} />)}
 			</div>
 			<p class="group pt-1.5 text-sm text-body/80">
-				<PiLightbulbBold
+				<PiLightbulbFill
 					className="-mt-0.5 inline-block transition duration-150 ease-in-out group-hover:text-primary"
 				/>
 				Feel free to explore my
