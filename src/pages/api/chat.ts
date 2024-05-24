@@ -2,6 +2,7 @@ import type { APIRoute } from "astro";
 import Groq from "groq-sdk";
 import { promises as fs } from "fs";
 import path from "path";
+import { fileURLToPath } from "url";
 
 const groq = new Groq({
 	apiKey: import.meta.env.GROQ_API_KEY,
@@ -10,6 +11,10 @@ const groq = new Groq({
 export const POST: APIRoute = async ({ request }) => {
 	try {
 		const { message, history } = await request.json();
+
+		// Use import.meta.url to construct __dirname
+		const __filename = fileURLToPath(import.meta.url);
+		const __dirname = path.dirname(__filename);
 
 		const systemFilePath = import.meta.env.PROD
 			? path.join(__dirname, "../utils/context.txt")
