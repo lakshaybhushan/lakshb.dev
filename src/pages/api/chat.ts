@@ -12,10 +12,6 @@ export const POST: APIRoute = async ({ request }) => {
 	try {
 		const { message, history } = await request.json();
 
-		// Use import.meta.url to construct __dirname
-		const __filename = fileURLToPath(import.meta.url);
-		const __dirname = path.dirname(__filename);
-
 		const systemFilePath = import.meta.env.PROD
 			? path.join(__dirname, "/docs/context.txt")
 			: path.join(process.cwd(), "public/docs/context.txt");
