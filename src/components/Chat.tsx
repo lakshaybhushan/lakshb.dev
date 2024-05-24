@@ -141,7 +141,7 @@ const GroqChat: React.FC = () => {
 						<div
 							className={`rounded-full p-2 ${isDisabled ? "bg-green-200 transition duration-150 ease-linear" : "bg-primary transition duration-150 ease-linear"}`}>
 							<IoArrowUpSharp
-								className={`${isDisabled ? "text-primary/40 transition duration-150 ease-linear" : "text-bgColor transition duration-150 ease-linear"}`}
+								className={`${isDisabled ? "text-primary/60 transition duration-150 ease-linear" : "text-bgColor transition duration-150 ease-linear"}`}
 							/>
 						</div>
 					</button>
