@@ -7,11 +7,11 @@ const groq = new Groq({
 
 export const POST: APIRoute = async ({ request }) => {
 	try {
-		const { message } = await request.json();
+		const { message, history } = await request.json();
 
 		const chatCompletion = await groq.chat.completions.create({
-			messages: [{ role: "user", content: message }],
-			model: "llama3-8b-8192",
+			messages: [...history, { role: "user", content: message }],
+			model: "gemma-7b-it",
 			stream: true,
 		});
 

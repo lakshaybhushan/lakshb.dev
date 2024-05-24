@@ -8,8 +8,7 @@ const GroqChat: React.FC = () => {
 	);
 	const [isTyping, setIsTyping] = useState(false);
 
-	const handleSubmit = async (event: React.FormEvent) => {
-		event.preventDefault();
+	const handleSubmit = async (message: string) => {
 		if (message.trim() === "") return;
 
 		const userMessage = {
@@ -20,12 +19,17 @@ const GroqChat: React.FC = () => {
 		setMessage("");
 		setIsTyping(true);
 
+		const history = messages.map((msg) => ({
+			role: msg.isUser ? "user" : "assistant",
+			content: msg.text,
+		}));
+
 		const res = await fetch("/api/chat", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
 			},
-			body: JSON.stringify({ message }),
+			body: JSON.stringify({ message, history }),
 		});
 		const data = await res.json();
 		console.log(data);
@@ -63,11 +67,15 @@ const GroqChat: React.FC = () => {
 		typeCharacter();
 	};
 
+	const handleButtonClick = (text: string) => {
+		handleSubmit(text);
+	};
+
 	const isDisabled = isTyping || message.trim() === "";
 
 	return (
 		<div className="flex h-[600px] flex-col text-sm">
-			<div className="flex-1 overflow-y-auto rounded-lg border p-4">
+			<div className="flex-1 overflow-y-auto rounded-lg border border-body/40 p-4">
 				{messages.map((message, index) => (
 					<div
 						key={index}
@@ -85,7 +93,36 @@ const GroqChat: React.FC = () => {
 					</div>
 				))}
 			</div>
-			<form onSubmit={handleSubmit} className="flex-none pt-4">
+			<div className="flex w-full justify-between gap-2 pt-4 text-xs">
+				<button
+					onClick={() => handleButtonClick("What is your design philosophy?")}
+					className="rounded-lg bg-rose-100 px-2.5 py-1.5 text-rose-700 transition duration-300 ease-in-out hover:bg-rose-200 hover:text-rose-900"
+					disabled={isTyping}>
+					What is your design philosophy?
+				</button>
+				<button
+					onClick={() => handleButtonClick("Are you available for hire?")}
+					className="rounded-lg bg-violet-100 px-2.5 py-1.5 text-violet-700 transition duration-300 ease-in-out hover:bg-violet-200 hover:text-violet-900"
+					disabled={isTyping}>
+					Are you available for hire?
+				</button>
+				<button
+					onClick={() =>
+						handleButtonClick(
+							"How much time does it takes for you to design & code a website?",
+						)
+					}
+					className="rounded-lg bg-amber-100 px-2.5 py-1.5 text-amber-700 transition duration-300 ease-in-out hover:bg-amber-200 hover:text-amber-900"
+					disabled={isTyping}>
+					How much time does it takes for you to design & code a website?
+				</button>
+			</div>
+			<form
+				onSubmit={(e) => {
+					e.preventDefault();
+					handleSubmit(message);
+				}}
+				className="flex-none pt-4">
 				<div className="flex">
 					<input
 						type="text"
@@ -94,22 +131,43 @@ const GroqChat: React.FC = () => {
 						value={message}
 						onChange={(e) => setMessage(e.target.value)}
 						disabled={isTyping}
-						className="border-gray-150 flex-1 rounded-l-full border border-r-0 bg-bgColor px-4 py-2.5 focus:outline-none focus:ring-0 active:focus:outline-none"
+						className="flex-1 rounded-l-full border border-r-0 border-body/40 bg-bgColor px-4 py-2.5 placeholder:text-body/40 focus:outline-none focus:ring-0 active:focus:outline-none"
 						placeholder="Ask about me or my work!"
 					/>
 					<button
 						type="submit"
 						disabled={isDisabled}
-						className="border-gray-150 rounded-r-full border border-l-0 px-1.5 focus:outline-none focus:ring-0 active:focus:outline-none">
+						className="rounded-r-full border border-l-0 border-body/40 px-1.5 focus:outline-none focus:ring-0 active:focus:outline-none">
 						<div
 							className={`rounded-full p-2 ${isDisabled ? "bg-green-200 transition duration-150 ease-linear" : "bg-primary transition duration-150 ease-linear"}`}>
 							<IoArrowUpSharp
-								className={`${isDisabled ? "text-primary transition duration-150 ease-linear" : "text-bgColor transition duration-150 ease-linear"}`}
+								className={`${isDisabled ? "text-primary/40 transition duration-150 ease-linear" : "text-bgColor transition duration-150 ease-linear"}`}
 							/>
 						</div>
 					</button>
 				</div>
 			</form>
+			<p className="pt-4 text-sm text-body/80">
+				Everyone makes mistakes, including this AI powered by{" "}
+				<a
+					href="https://ai.google.dev/gemma"
+					target="_blank"
+					rel="noopener noreferrer"
+					className="text-body underline-offset-4 transition duration-150 ease-in-out hover:text-primary hover:underline">
+					Google's Gemma
+				</a>{" "}
+				and{" "}
+				<a
+					href="https://groq.com/"
+					target="_blank"
+					rel="noopener noreferrer"
+					className="text-body underline-offset-4 transition duration-150 ease-in-out hover:text-primary hover:underline">
+					{" "}
+					Groq
+				</a>
+				. <br className="hidden md:block" />
+				Make sure to double-check important information.
+			</p>
 		</div>
 	);
 };
