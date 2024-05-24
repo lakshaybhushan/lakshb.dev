@@ -4,9 +4,7 @@ import SpotifyNowPlaying from "../components/Spotify.tsx";
 ---
 
 <Layout title="Lakshay Bhushan | Colophon">
-	<h1 class="text-[2rem] font-bold tracking-tight text-primary">
-		Colophon
-	</h1>
+	<h1 class="text-[2rem] font-bold tracking-tight text-primary">Colophon</h1>
 	<h2 class="text-base font-medium tracking-tight text-title">
 		/&#712;kɒləfən/ — a brief statement at a book's end detailing its
 		production.
@@ -107,7 +105,7 @@ import SpotifyNowPlaying from "../components/Spotify.tsx";
 			Now Playing
 		</h2>
 		<div class="w-fit pt-4">
-			<SpotifyNowPlaying client:only />
+			<SpotifyNowPlaying client:visible />
 		</div>
 	</section>
 </Layout>

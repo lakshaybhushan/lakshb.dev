@@ -18,9 +18,9 @@ const SpotifyNowPlaying: React.FC = () => {
 			if (songData) {
 				setResult(songData);
 			}
-			setLoading(false);
 		} catch (error) {
 			console.error("Error fetching now playing item:", error);
+		} finally {
 			setLoading(false);
 		}
 	};
@@ -42,7 +42,7 @@ const SpotifyNowPlaying: React.FC = () => {
 			{loading ? (
 				<div className="flex items-center gap-2 text-sm text-body underline-offset-4 transition duration-300 ease-in-out hover:text-primary hover:underline">
 					<FaSpotify />
-					<span>Not listening to spotify</span>
+					<span>Loading...</span>
 				</div>
 			) : result.isPlaying ? (
 				<a href={result.songUrl} rel="noopener noreferrer" target="_blank">

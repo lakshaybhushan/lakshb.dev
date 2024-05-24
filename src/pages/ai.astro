@@ -1,14 +1,17 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import GroqChat from "../components/Chat.tsx";
 ---
 
 <Layout title="Lakshay Bhushan | AI">
 	<h1 class="text-[2rem] font-bold tracking-tight text-primary">
 		Welcome to laksh://ai
 	</h1>
-	<div>
-		<h2 class="text-base font-medium tracking-tight text-title">
-			have a chat with my AI to know more about me!
-		</h2>
-	</div>
+
+	<h2 class="text-base font-medium tracking-tight text-title">
+		have a chat with my AI to know more about me!
+	</h2>
+	<section class="pt-4">
+		<GroqChat client:load />
+	</section>
 </Layout>
