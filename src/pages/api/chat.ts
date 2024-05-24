@@ -25,7 +25,7 @@ export const POST: APIRoute = async ({ request }) => {
 				},
 				{ role: "user", content: message },
 			],
-			model: "",
+			model: "llama3-8b-8192",
 			stream: true,
 		});
 
