@@ -1,10 +1,20 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import GroqChat from "../components/Chat.tsx";
+import { BsStars } from "react-icons/bs";
 ---
 
 <Layout title="Lakshay Bhushan | AI">
-	<h1 class="text-[2rem] font-bold tracking-tight text-primary">laksh://ai</h1>
+	<div class="flex items-center justify-between">
+		<h1 class="text-[2rem] font-bold tracking-tight text-primary">
+			laksh://ai
+		</h1>
+		<div
+			class="rounded-full bg-emerald-100 px-2.5 py-1.5 text-xs font-medium text-emerald-700">
+			<BsStars className="-mt-0.5 inline-block text-emerald-700" />
+			<span>Beta</span>
+		</div>
+	</div>
 
 	<h2 class="text-base font-medium tracking-tight text-title">
 		have a chat with my AI to know more about me!

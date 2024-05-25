@@ -10,7 +10,7 @@ const GroqChat: React.FC = () => {
 		return `<pre class="p-1.5 overflow-auto"><code class="${languageClass} text-slate-700 whitespace-pre-wrap break-words text-xs">${code}</code></pre>`;
 	};
 
-	renderer.link = (href, title, text) =>
+	renderer.link = (href, text) =>
 		`<a href="${href}" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-4 transition duration-150 ease-in-out hover:text-black hover:underline">${text}</a>`;
 
 	marked.setOptions({ renderer });
@@ -87,7 +87,7 @@ const GroqChat: React.FC = () => {
 
 	return (
 		<div className="flex h-[600px] flex-col text-sm">
-			<div className="flex-1 overflow-y-auto rounded-lg border border-body/40 p-4">
+			<div className="flex-1 overflow-y-auto rounded-lg border border-body/20 p-4">
 				{messages.map((message, index) => (
 					<div
 						key={index}
@@ -143,17 +143,17 @@ const GroqChat: React.FC = () => {
 						value={message}
 						onChange={(e) => setMessage(e.target.value)}
 						disabled={isTyping}
-						className="flex-1 rounded-l-full border border-r-0 border-body/40 bg-bgColor px-4 py-2.5 placeholder:text-body/40 focus:outline-none focus:ring-0 active:focus:outline-none"
+						className="flex-1 rounded-l-full border border-r-0 border-body/20 bg-bgColor px-4 py-2.5 placeholder:text-body/50 focus:outline-none focus:ring-0 active:focus:outline-none"
 						placeholder="Ask about me or my work!"
 					/>
 					<button
 						type="submit"
 						disabled={isDisabled}
-						className="rounded-r-full border border-l-0 border-body/40 px-1.5 focus:outline-none focus:ring-0 active:focus:outline-none">
+						className="rounded-r-full border border-l-0 border-body/20 px-1.5 focus:outline-none focus:ring-0 active:focus:outline-none">
 						<div
-							className={`rounded-full p-2 ${isDisabled ? "bg-green-200 transition duration-150 ease-linear" : "bg-primary transition duration-150 ease-linear"}`}>
+							className={`rounded-full p-2 ${isDisabled ? "bg-hoverColor transition duration-150 ease-linear" : "bg-primary transition duration-150 ease-linear"}`}>
 							<IoArrowUpSharp
-								className={`${isDisabled ? "text-primary/60 transition duration-150 ease-linear" : "text-bgColor transition duration-150 ease-linear"}`}
+								className={`${isDisabled ? "text-primary transition duration-150 ease-linear" : "text-bgColor transition duration-150 ease-linear"}`}
 							/>
 						</div>
 					</button>

@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment-timezone";
 import { getTimeOfDay } from "../utils/getTime";
+import { motion, AnimatePresence } from "framer-motion";
 
 const NowTime: React.FC = () => {
+	const variants = {
+		initial: { opacity: 0 },
+		animate: { opacity: 1 },
+		exit: { opacity: 0 },
+	};
+
 	const [location, setLocation] = useState<string>("Loading...");
 	const [time, setTime] = useState<moment.Moment | null>(null);
 	const [timeOfDay, setTimeOfDay] = useState<string>("");
@@ -62,16 +69,44 @@ const NowTime: React.FC = () => {
 	};
 
 	return (
-		<div className="flex items-center gap-2">
-			<div>{renderSvg()}</div>
-			{time && (
-				<span className="text-xs text-body transition duration-150">
-					{location}, {time.format("h")}
-					<span className="animate-pulse">:</span>
-					{time.format("mm A")}
-				</span>
-			)}
-		</div>
+		<AnimatePresence>
+			<motion.div
+				key={`${location}-${timeOfDay}`}
+				className="flex items-center gap-2"
+				variants={variants}
+				initial="initial"
+				animate="animate"
+				exit="exit"
+				transition={{ duration: 0.3 }}>
+				<motion.div
+					initial={{ scale: 0, opacity: 0 }}
+					animate={{ scale: 1, opacity: 1 }}
+					transition={{ duration: 0.3, delay: 0.1 }}>
+					{renderSvg()}
+				</motion.div>
+				{time && (
+					<motion.span
+						className="text-xs text-body transition duration-150"
+						initial={{ opacity: 0}}
+						animate={{ opacity: 1}}
+						transition={{ duration: 0.3, delay: 0.25 }}>
+						{location}, {time.format("h")}
+						<motion.span
+							className="animate-pulse"
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							transition={{
+								duration: 0.5,
+								repeat: Infinity,
+								repeatType: "reverse",
+							}}>
+							:
+						</motion.span>
+						{time.format("mm A")}
+					</motion.span>
+				)}
+			</motion.div>
+		</AnimatePresence>
 	);
 };
 

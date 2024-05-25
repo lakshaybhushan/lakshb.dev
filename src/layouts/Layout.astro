@@ -3,6 +3,7 @@ import { AstroFont } from "astro-font";
 
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
+import { ViewTransitions } from "astro:transitions";
 
 interface Props {
 	title: string;
@@ -45,3 +46,5 @@ const { title } = Astro.props;
 		<Footer />
 	</body>
 </html>
+
+<ViewTransitions />
