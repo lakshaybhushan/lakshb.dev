@@ -1,7 +1,20 @@
 import React, { useState } from "react";
 import { IoArrowUpSharp } from "react-icons/io5";
+import { marked } from "marked";
 
 const GroqChat: React.FC = () => {
+	const renderer = new marked.Renderer();
+
+	renderer.code = (code, language) => {
+		const languageClass = language ? `language-${language}` : "";
+		return `<pre class="p-1.5 overflow-auto"><code class="${languageClass} text-slate-700 whitespace-pre-wrap break-words text-xs">${code}</code></pre>`;
+	};
+
+	renderer.link = (href, title, text) =>
+		`<a href="${href}" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-4 transition duration-150 ease-in-out hover:text-black hover:underline">${text}</a>`;
+
+	marked.setOptions({ renderer });
+
 	const [message, setMessage] = useState("");
 	const [messages, setMessages] = useState<{ text: string; isUser: boolean }[]>(
 		[],
@@ -32,7 +45,6 @@ const GroqChat: React.FC = () => {
 			body: JSON.stringify({ message, history }),
 		});
 		const data = await res.json();
-		console.log(data);
 		simulateTypingEffect(data.reply);
 	};
 
@@ -88,7 +100,7 @@ const GroqChat: React.FC = () => {
 									? "rounded-full bg-blue-100 text-blue-700"
 									: "rounded-full bg-green-100 text-emerald-700"
 							} max-w-xs rounded-lg px-2.5 py-1.5`}>
-							<p>{message.text}</p>
+							<div dangerouslySetInnerHTML={{ __html: marked(message.text) }} />
 						</div>
 					</div>
 				))}
@@ -150,11 +162,11 @@ const GroqChat: React.FC = () => {
 			<p className="pt-4 text-sm text-body/80">
 				Everyone makes mistakes, including this AI powered by{" "}
 				<a
-					href="https://ai.google.dev/gemma"
+					href="https://llama.meta.com/llama3/"
 					target="_blank"
 					rel="noopener noreferrer"
 					className="text-body underline-offset-4 transition duration-150 ease-in-out hover:text-primary hover:underline">
-					Google's Gemma
+					Meta Llama 3
 				</a>{" "}
 				and{" "}
 				<a

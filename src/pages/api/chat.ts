@@ -16,7 +16,7 @@ export const POST: APIRoute = async ({ request }) => {
 					role: "system",
 					content:
 						fyi +
-						"Provide answers exclusively in plain text format. Also make the answers in best format possible and avoid using any special characters. Answer should be in first person format.",
+						"Answer should be in first person format.",
 				},
 				{ role: "user", content: message },
 			],
