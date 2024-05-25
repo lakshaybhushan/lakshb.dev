@@ -10,8 +10,8 @@ const GroqChat: React.FC = () => {
 		return `<pre class="p-1.5 overflow-auto"><code class="${languageClass} text-slate-700 whitespace-pre-wrap break-words text-xs">${code}</code></pre>`;
 	};
 
-	renderer.link = (href, text) =>
-		`<a href="${href}" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-4 transition duration-150 ease-in-out hover:text-black hover:underline">${text}</a>`;
+	renderer.link = (href, title, text) =>
+		`<a href="${href}" target="_blank" rel="noopener noreferrer" class="text-indigo-700 underline underline-offset-2 transition duration-150 ease-in-out hover:text-black hover:underline">${text}</a>`;
 
 	marked.setOptions({ renderer });
 
@@ -143,7 +143,9 @@ const GroqChat: React.FC = () => {
 						value={message}
 						onChange={(e) => setMessage(e.target.value)}
 						disabled={isTyping}
-						className="flex-1 rounded-l-full border border-r-0 border-body/20 bg-bgColor px-4 py-2.5 placeholder:text-body/50 focus:outline-none focus:ring-0 active:focus:outline-none"
+						className={`flex-1 rounded-l-full border border-r-0 border-body/20 bg-bgColor px-4 py-2.5 placeholder:text-body/50 focus:outline-none focus:ring-0 active:focus:outline-none ${
+							isTyping ? "cursor-not-allowed" : "cursor-auto"
+						}`}
 						placeholder="Ask about me or my work!"
 					/>
 					<button
