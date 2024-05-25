@@ -12,10 +12,11 @@ export const POST: APIRoute = async ({ request }) => {
 	try {
 		const { message, history } = await request.json();
 
-		const systemFilePath = import.meta.env.PROD
-			? path.join(__dirname, "/docs/context.txt")
-			: path.join(process.cwd(), "public/docs/context.txt");
-		const systemContent = await fs.readFile(systemFilePath, "utf8");
+		const __filename = fileURLToPath(import.meta.url);
+		const __dirname = path.dirname(__filename);
+
+		const contextFilePath = path.resolve(__dirname, "context.txt");
+		const systemContent = await fs.readFile(contextFilePath, "utf-8");
 
 		const chatCompletion = await groq.chat.completions.create({
 			messages: [
