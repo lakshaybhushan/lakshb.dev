@@ -2,7 +2,6 @@ import type { APIRoute } from "astro";
 import Groq from "groq-sdk";
 import { promises as fs } from "fs";
 import path from "path";
-import { fileURLToPath } from "url";
 
 const groq = new Groq({
 	apiKey: import.meta.env.GROQ_API_KEY,
@@ -12,10 +11,7 @@ export const POST: APIRoute = async ({ request }) => {
 	try {
 		const { message, history } = await request.json();
 
-		const __filename = fileURLToPath(import.meta.url);
-		const __dirname = path.dirname(__filename);
-
-		const contextFilePath = path.resolve(__dirname, "context.txt");
+		const contextFilePath = path.resolve("public/docs/context.txt");
 		const systemContent = await fs.readFile(contextFilePath, "utf-8");
 
 		const chatCompletion = await groq.chat.completions.create({
@@ -25,7 +21,7 @@ export const POST: APIRoute = async ({ request }) => {
 					role: "system",
 					content:
 						systemContent +
-						"Provide answers exclusively in plain text format. Also make the answers in best format possible and avoid using any special characters.",
+						"Provide answers exclusively in plain text format. Also make the answers in best format possible and avoid using any special characters. Answer should be in first person format.",
 				},
 				{ role: "user", content: message },
 			],
