@@ -57,12 +57,14 @@ const SpotifyNowPlaying: React.FC = () => {
 					href="https://open.spotify.com/user/amcdf5xiittevf5gl1ecjqfyu"
 					rel="noopener noreferrer"
 					target="_blank">
-					<div className="flex items-center gap-2 text-sm text-body underline-offset-4 transition duration-300 ease-in-out hover:text-primary hover:underline">
+					<div className="flex items-center gap-2 text-sm text-body">
 						<div className="flex h-[45px] w-[45px] items-center justify-center rounded-md bg-[#1CB955] text-black">
 							<FaSpotify className="text-2xl" />
 						</div>
 						<p className="text-xs">
-							<span className="font-medium text-black">Hold up</span>
+							<span className="font-medium text-black underline-offset-4 transition duration-150 ease-in-out hover:text-primary hover:underline">
+								Hold up
+							</span>
 							<br />
 							Checking Lakshay's Spotify...
 						</p>
@@ -126,12 +128,14 @@ const SpotifyNowPlaying: React.FC = () => {
 					href="https://open.spotify.com/user/amcdf5xiittevf5gl1ecjqfyu"
 					rel="noopener noreferrer"
 					target="_blank">
-					<div className="flex items-center gap-2 text-sm text-body underline-offset-4 transition duration-300 ease-in-out hover:text-primary hover:underline">
-						<div className="flex h-[45px] w-[45px] items-center justify-center rounded-md bg-[#1DB954] text-black">
+					<div className="flex items-center gap-2 text-sm text-body">
+						<div className="flex h-[45px] w-[45px] items-center justify-center rounded-md bg-[#1CB955] text-black">
 							<FaSpotify className="text-2xl" />
 						</div>
 						<p className="text-xs">
-							<span className="font-medium text-black">Not playing</span>
+							<span className="font-medium text-black underline-offset-4 transition duration-150 ease-in-out hover:text-primary hover:underline">
+								Not playing
+							</span>
 							<br />
 							Click to view my profile.
 						</p>
