@@ -14,9 +14,7 @@ export const POST: APIRoute = async ({ request }) => {
 				...history,
 				{
 					role: "system",
-					content:
-						fyi +
-						"Answer should be in first person format.",
+					content: fyi + "Answer should be in first person format.",
 				},
 				{ role: "user", content: message },
 			],
