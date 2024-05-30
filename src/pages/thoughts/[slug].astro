@@ -1,0 +1,44 @@
+---
+// src/pages/blog/[slug].astro
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+export const prerender = true;
+
+interface Props {
+	post: CollectionEntry<"thoughts">;
+}
+
+export async function getStaticPaths() {
+	const blogPosts = await getCollection("thoughts");
+	return blogPosts.map((post) => ({
+		params: { slug: post.slug },
+		props: { post },
+	}));
+}
+const { post } = Astro.props;
+
+if (!post) {
+	return { status: 404 };
+}
+const { Content } = await post.render();
+---
+
+<Layout title={post.data.title}>
+	<div>
+		<h1 class="text-[2rem] font-bold tracking-tight text-primary">
+			{post.data.title}
+		</h1>
+		<p class="lead text-base font-medium tracking-tight text-title">
+			{post.data.excerpt}
+		</p>
+
+		<article
+			class="prose prose-a:underline-offset-4 prose-sm prose-headings:text-title prose-code:text-body prose-a:text-primary prose-strong:text-body prose-blockquote:text-title prose-li:marker:text-body">
+			<div class="font-normal text-body">
+				<Content />
+			</div>
+		</article>
+	</div>
+</Layout>

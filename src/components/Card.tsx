@@ -19,12 +19,12 @@ const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
 				href={project.link}
 				target="_blank"
 				rel="noreferrer"
-				className="group -mx-3 w-full rounded-lg px-3 py-2 hover:bg-hoverColor">
-				<h2 className="font-headin flex items-center justify-between text-sm font-medium tracking-tight group-hover:text-primary">
+				className="group -mx-3 w-full rounded-lg px-3 py-2 transition-all duration-300 ease-in-out md:hover:scale-95 md:hover:bg-hoverColor">
+				<h2 className="flex items-center justify-between text-sm font-medium tracking-tight text-title md:group-hover:text-primary">
 					{project.title}
-					<RiArrowRightUpLine className="ml-0.5 text-primary opacity-0 transition-opacity duration-150 group-hover:opacity-100" />
+					<RiArrowRightUpLine className="ml-0.5 text-primary opacity-0 transition-opacity duration-150 md:group-hover:opacity-100" />
 				</h2>
-				<p className=" text-sm text-body">{project.description}</p>
+				<p className="text-sm text-body">{project.description}</p>
 			</a>
 		</div>
 	);

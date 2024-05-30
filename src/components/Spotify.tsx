@@ -62,7 +62,7 @@ const SpotifyNowPlaying: React.FC = () => {
 							<FaSpotify className="text-2xl" />
 						</div>
 						<p className="text-xs">
-							<span className="font-medium text-black underline-offset-4 transition duration-150 ease-in-out hover:text-primary hover:underline">
+							<span className="font-medium text-black underline-offset-4 transition duration-150 ease-in-out md:hover:text-primary md:hover:underline">
 								Hold up
 							</span>
 							<br />
@@ -133,7 +133,7 @@ const SpotifyNowPlaying: React.FC = () => {
 							<FaSpotify className="text-2xl" />
 						</div>
 						<p className="text-xs">
-							<span className="font-medium text-black underline-offset-4 transition duration-150 ease-in-out hover:text-primary hover:underline">
+							<span className="font-medium text-black underline-offset-4 transition duration-150 ease-in-out md:hover:text-primary md:hover:underline">
 								Not playing
 							</span>
 							<br />

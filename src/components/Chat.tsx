@@ -108,13 +108,13 @@ const GroqChat: React.FC = () => {
 			<div className="flex w-full justify-between gap-2 pt-4 text-xs">
 				<button
 					onClick={() => handleButtonClick("What is your design philosophy?")}
-					className="rounded-lg bg-rose-100 px-2.5 py-1.5 text-rose-700 transition duration-300 ease-in-out hover:bg-rose-200 hover:text-rose-900"
+					className="rounded-lg bg-rose-100 px-2.5 py-1.5 text-rose-700 transition duration-300 ease-in-out md:hover:scale-95 md:hover:bg-rose-200 md:hover:text-rose-900"
 					disabled={isTyping}>
 					What is your design philosophy?
 				</button>
 				<button
 					onClick={() => handleButtonClick("Are you available for hire?")}
-					className="rounded-lg bg-violet-100 px-2.5 py-1.5 text-violet-700 transition duration-300 ease-in-out hover:bg-violet-200 hover:text-violet-900"
+					className="rounded-lg bg-violet-100 px-2.5 py-1.5 text-violet-700 transition duration-300 ease-in-out md:hover:scale-95 md:hover:bg-violet-200 md:hover:text-violet-900"
 					disabled={isTyping}>
 					Are you available for hire?
 				</button>
@@ -124,7 +124,7 @@ const GroqChat: React.FC = () => {
 							"How much time does it takes for you to design & code a website?",
 						)
 					}
-					className="rounded-lg bg-amber-100 px-2.5 py-1.5 text-amber-700 transition duration-300 ease-in-out hover:bg-amber-200 hover:text-amber-900"
+					className="rounded-lg bg-amber-100 px-2.5 py-1.5 text-amber-700 transition duration-300 ease-in-out md:hover:scale-95 md:hover:bg-amber-200 md:hover:text-amber-900"
 					disabled={isTyping}>
 					How much time does it takes for you to design & code a website?
 				</button>
@@ -153,7 +153,7 @@ const GroqChat: React.FC = () => {
 						disabled={isDisabled}
 						className="rounded-r-full border border-l-0 border-body/20 px-1.5 focus:outline-none focus:ring-0 active:focus:outline-none">
 						<div
-							className={`rounded-full p-2 ${isDisabled ? "bg-hoverColor transition duration-150 ease-linear" : "bg-primary transition duration-150 ease-linear"}`}>
+							className={`rounded-full p-2 ${isDisabled ? "transition duration-300 ease-in-out md:bg-hoverColor" : "bg-primary transition duration-300 ease-in-out md:hover:scale-95"}`}>
 							<IoArrowUpSharp
 								className={`${isDisabled ? "text-primary transition duration-150 ease-linear" : "text-bgColor transition duration-150 ease-linear"}`}
 							/>
@@ -167,7 +167,7 @@ const GroqChat: React.FC = () => {
 					href="https://llama.meta.com/llama3/"
 					target="_blank"
 					rel="noopener noreferrer"
-					className="text-body underline-offset-4 transition duration-150 ease-in-out hover:text-primary hover:underline">
+					className="text-body underline-offset-4 transition duration-150 ease-in-out md:hover:text-primary md:hover:underline">
 					Meta Llama 3
 				</a>{" "}
 				and{" "}
@@ -175,7 +175,7 @@ const GroqChat: React.FC = () => {
 					href="https://groq.com/"
 					target="_blank"
 					rel="noopener noreferrer"
-					className="text-body underline-offset-4 transition duration-150 ease-in-out hover:text-primary hover:underline">
+					className="text-body underline-offset-4 transition duration-150 ease-in-out md:hover:text-primary md:hover:underline">
 					{" "}
 					Groq
 				</a>
