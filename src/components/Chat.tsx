@@ -10,7 +10,7 @@ const GroqChat: React.FC = () => {
 		return `<pre class="p-1.5 overflow-auto"><code class="${languageClass} text-slate-700 whitespace-pre-wrap break-words text-xs">${code}</code></pre>`;
 	};
 
-	renderer.link = (href, title, text) =>
+	renderer.link = (href, _title, text) =>
 		`<a href="${href}" target="_blank" rel="noopener noreferrer" class="text-indigo-700 underline underline-offset-2 transition duration-150 ease-in-out hover:text-black hover:underline">${text}</a>`;
 
 	marked.setOptions({ renderer });
