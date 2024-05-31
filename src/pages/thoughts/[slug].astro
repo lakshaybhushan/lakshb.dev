@@ -23,7 +23,7 @@ if (!post) {
 const { Content } = await post.render();
 ---
 
-<Layout title={post.data.title}>
+<Layout title=`Thoughts • ${post.data.title}`>
 	<div>
 		<h1 class="text-[2rem] font-bold tracking-tight text-primary">
 			{post.data.title}
