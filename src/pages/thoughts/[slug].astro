@@ -4,8 +4,6 @@ import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 
-export const prerender = true;
-
 interface Props {
 	post: CollectionEntry<"thoughts">;
 }

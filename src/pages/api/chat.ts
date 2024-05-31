@@ -2,6 +2,8 @@ import type { APIRoute } from "astro";
 import Groq from "groq-sdk";
 import { fyi } from "../../constants/fyi";
 
+export const prerender = false;
+
 const groq = new Groq({
 	apiKey: import.meta.env.GROQ_API_KEY,
 });
