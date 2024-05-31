@@ -6,28 +6,20 @@ import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import mdx from "@astrojs/mdx";
 
+import lenis from "astro-lenis";
+
 // https://astro.build/config
 export default defineConfig({
-	output: "hybrid",
-	integrations: [
-		react(),
-		tailwind(),
-		mdx({
-			syntaxHighlight: false,
-			rehypePlugins: [
-				rehypeSlug,
-				[
-					rehypePrettyCode,
-					{
-						theme: "houston",
-					},
-				],
-			],
-		}),
-	],
-	adapter: vercel({
-		webAnalytics: {
-			enabled: true,
-		},
-	}),
+  output: "hybrid",
+  integrations: [react(), tailwind(), mdx({
+    syntaxHighlight: false,
+    rehypePlugins: [rehypeSlug, [rehypePrettyCode, {
+      theme: "houston"
+    }]]
+  }), lenis()],
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true
+    }
+  })
 });
