@@ -75,18 +75,22 @@ const projects = projectsData;
 		<section class="pt-8">
 			<h2 class="font-medium tracking-tight text-title">Projects</h2>
 			<div class="pt-1.5">
-				{projects.map((project) => <ProjectCard project={project} />)}
+				{
+					projects.map((project) => (
+						<ProjectCard project={project} client:load />
+					))
+				}
 			</div>
 			<p class="group pt-1.5 text-sm text-body/80">
 				<PiLightbulbFill
-					className="-mt-0.5 inline-block transition-all duration-300 ease-in-out md:group-hover:scale-125 md:group-hover:text-primary"
+					className="-mt-0.5 inline-block transition-all duration-300 ease-in-out md:group-hover:scale-125  md:group-hover:text-primary"
 				/>
 				Feel free to explore my
 				<a
 					href="https://github.com/lakshaybhushan"
 					rel="noopenner noreferrer"
 					target="_blank"
-					class="text-body underline-offset-4 transition-all duration-150 ease-in-out md:hover:text-primary md:hover:underline md:group-hover:text-primary"
+					class="text-body underline-offset-4 transition-all duration-150 ease-in-out md:hover:text-primary md:group-hover:font-bold md:hover:underline md:group-hover:text-primary"
 					>GitHub</a
 				> for more projects. Most of them are open-source.
 			</p>
