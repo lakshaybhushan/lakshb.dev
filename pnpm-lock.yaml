@@ -42,7 +42,7 @@ importers:
         specifier: ^2.4.0
         version: 2.5.0(astro@4.10.2(@types/node@18.19.34)(typescript@5.4.5))(lenis@1.1.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       framer-motion:
-        specifier: ^11.2.9
+        specifier: ^11.2.10
         version: 11.2.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       groq-sdk:
         specifier: ^0.4.0

@@ -1,33 +1,32 @@
 [
 	{
 		"id": 1,
+		"title": "What the Hack?!",
+		"description": "A HackerNews comments summarizer",
+		"link": "https://wth.lakshb.dev/"
+	},
+	{
+		"id": 2,
 		"title": "OEPP",
 		"description": "An ontology evaluation protégé plugin",
 		"link": "https://github.com/lakshaybhushan/oepp"
 	},
 	{
-		"id": 2,
+		"id": 3,
 		"title": "KalaKunj",
 		"description": "Traditional Indian art showcase in AR",
 		"link": "https://github.com/lakshaybhushan/kalakunj"
 	},
 	{
-		"id": 3,
+		"id": 4,
 		"title": "voyageVR",
 		"description": "End traveller focused VR tourism (prototype)",
 		"link": "https://github.com/lakshaybhushan/voyageVR"
 	},
 	{
-		"id": 4,
+		"id": 5,
 		"title": "wa.ai",
 		"description": "WhatsApp + AI integration for businesses",
-		"link": "https://waai.heydo.tech"
-	},
-	{
-		"id": 5,
-		"title": "Tank Stars",
-		"description": "A desktop game clone of a mobile game Tank Stars",
-		"link": "https://github.com/lakshaybhushan/tankstars"
-
+		"link": "https://waai-zeta.vercel.app"
 	}
 ]
