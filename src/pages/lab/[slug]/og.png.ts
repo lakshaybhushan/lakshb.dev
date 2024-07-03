@@ -50,7 +50,7 @@ export async function GET({ props }: Props) {
 		React.createElement(
 			"div",
 			{
-				tw: "absolute right-[40px] bottom-[40px] flex items-center",
+				tw: "absolute right-[50px] bottom-[40px] flex items-center",
 			},
 			React.createElement(
 				"div",
@@ -68,7 +68,7 @@ export async function GET({ props }: Props) {
 					tw: "px-2 text-3xl text-[#00997E]",
 					style: {
 						fontSize: "30px",
-                        fontFamily: "Satoshi-Bold",
+						fontFamily: "Satoshi-Bold",
 						letterSpacing: "-0.05em",
 					},
 				},
@@ -85,8 +85,6 @@ export async function GET({ props }: Props) {
 	);
 
 	return new ImageResponse(html, {
-		width: 1200,
-		height: 600,
 		fonts: [
 			{
 				name: "Satosh-Medium",
