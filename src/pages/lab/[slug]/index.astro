@@ -54,17 +54,6 @@ const jsonLd = {
 
 <LabLayout title=`Lab • ${post.data.title}`>
 	<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-
-	<Metadata
-		slot="head"
-		title={post.data.title}
-		description={post.data.excerpt}
-		image={`${import.meta.env.SITE}/lab/${post.slug}/og.png`}
-		canonicalUrl={`${import.meta.env.SITE}/lab/${post.slug}/`}
-		publishedTime={post.data.date.toISOString()}
-		type="article"
-	/>
-
 	<div>
 		<h1 class="text-[2rem] font-bold tracking-tight text-primary">
 			{post.data.title}
@@ -83,6 +72,13 @@ const jsonLd = {
 			class="prose prose-sm prose-headings:text-title prose-a:text-primary prose-a:underline-offset-4 prose-blockquote:text-title prose-strong:text-body prose-code:text-body prose-li:marker:text-body prose-img:rounded-md">
 			<div class="font-normal text-body">
 				<Content />
+				<Metadata
+					title={post.data.title}
+					description={post.data.excerpt}
+					image={`${import.meta.env.SITE}/lab/${post.slug}/og.png`}
+					canonicalUrl={`${import.meta.env.SITE}/lab/${post.slug}/`}
+					type="article"
+				/>
 			</div>
 		</article>
 	</div>
