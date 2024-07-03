@@ -53,7 +53,7 @@ const jsonLd = {
 ---
 
 <LabLayout post={post}>
-	<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+	<script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 	<div>
 		<h1 class="text-[2rem] font-bold tracking-tight text-primary">
 			{post.data.title}
