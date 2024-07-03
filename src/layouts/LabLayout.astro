@@ -4,11 +4,28 @@ import Footer from "../components/Footer.astro";
 import { ViewTransitions } from "astro:transitions";
 import PostHog from "../components/posthog.astro";
 import LabNav from "../components/LabNav.astro";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import Metadata from "../components/Metadata.astro";
 
 interface Props {
-	title: string;
+	post: CollectionEntry<"lab">;
 }
-const { title } = Astro.props;
+
+export async function getStaticPaths() {
+	const blogPosts = await getCollection("lab");
+	return blogPosts.map((post) => ({
+		params: { slug: post.slug },
+		props: { post },
+	}));
+}
+
+const { post } = Astro.props;
+
+if (!post) {
+	return { status: 404 };
+}
+
 ---
 
 <!doctype html>
@@ -20,9 +37,21 @@ const { title } = Astro.props;
 			content="Lakshay Bhushan's personal portfolio website made with Astro, React and TailwindCSS"
 		/>
 		<meta name="viewport" content="width=device-width" />
+
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+
+		<Metadata
+			slot="head"
+			title={post.data.title}
+			description={post.data.excerpt}
+			image={`${import.meta.env.SITE}/lab/${post.slug}/og.png`}
+			canonicalUrl={`${import.meta.env.SITE}/lab/${post.slug}/`}
+			publishedTime={post.data.date.toISOString()}
+			type="article"
+		/>
+
+		<title>Lab • {post.data.title}</title>
 		<PostHog />
 		<AstroFont
 			config={[
