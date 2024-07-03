@@ -21,7 +21,6 @@
     "@vercel/og": "^0.6.2",
     "astro": "^4.10.2",
     "astro-font": "^0.0.81",
-    "astro-lenis": "^1.0.0",
     "framer-motion": "^11.2.10",
     "groq-sdk": "^0.4.0",
     "lenis": "^1.1.1",

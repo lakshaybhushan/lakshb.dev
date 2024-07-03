@@ -1,22 +1,23 @@
 ---
-// src/pages/blog/[slug].astro
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
-import Layout from "../../layouts/Layout.astro";
+import LabLayout from "../../../layouts/LabLayout.astro";
 import { Image } from "astro:assets";
-import { getArticleSchema, thoughtsWebsite } from "../../utils/structuredData";
+import { getArticleSchema, labWebsite } from "../../../utils/structuredData";
+import Metadata from "../../../components/Metadata.astro";
 
 interface Props {
-	post: CollectionEntry<"thoughts">;
+	post: CollectionEntry<"lab">;
 }
 
 export async function getStaticPaths() {
-	const blogPosts = await getCollection("thoughts");
+	const blogPosts = await getCollection("lab");
 	return blogPosts.map((post) => ({
 		params: { slug: post.slug },
 		props: { post },
 	}));
 }
+
 const { post } = Astro.props;
 
 if (!post) {
@@ -33,26 +34,37 @@ const breadcrumbsStructuredData = {
 		{
 			"@type": "ListItem",
 			position: 1,
-			name: "Thoughts",
-			item: `${import.meta.env.SITE}/thoughts/`,
+			name: "lab",
+			item: `${import.meta.env.SITE}/lab/`,
 		},
 		{
 			"@type": "ListItem",
 			position: 2,
 			name: post.data.title,
-			item: `${import.meta.env.SITE}/thoughts/${post.slug}/`,
+			item: `${import.meta.env.SITE}/lab/${post.slug}/`,
 		},
 	],
 };
 
 const jsonLd = {
 	"@context": "https://schema.org",
-	"@graph": [articleStructuredData, breadcrumbsStructuredData, thoughtsWebsite],
+	"@graph": [articleStructuredData, breadcrumbsStructuredData, labWebsite],
 };
 ---
 
-<Layout title=`Thoughts • ${post.data.title}`>
+<LabLayout title=`Lab • ${post.data.title}`>
 	<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+	<Metadata
+		slot="head"
+		title={post.data.title}
+		description={post.data.excerpt}
+		image={`${import.meta.env.SITE}/lab/${post.slug}/og.png`}
+		canonicalUrl={`${import.meta.env.SITE}/lab/${post.slug}/`}
+		publishedTime={post.data.date.toISOString()}
+		type="article"
+	/>
+
 	<div>
 		<h1 class="text-[2rem] font-bold tracking-tight text-primary">
 			{post.data.title}
@@ -74,4 +86,4 @@ const jsonLd = {
 			</div>
 		</article>
 	</div>
-</Layout>
+</LabLayout>

@@ -5,7 +5,6 @@ import vercel from "@astrojs/vercel/serverless";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import mdx from "@astrojs/mdx";
-import lenis from "astro-lenis";
 
 import sitemap from "@astrojs/sitemap";
 
@@ -17,10 +16,12 @@ export default defineConfig({
     rehypePlugins: [rehypeSlug, [rehypePrettyCode, {
       theme: "houston"
     }]]
-  }), lenis(), sitemap()],
+  }), sitemap()],
+  site: "https://lakshb.dev",
   adapter: vercel({
     webAnalytics: {
       enabled: true
-    }
+    },
+    includeFiles: ["./public/fonts/Satoshi-Medium.ttf", "./public/fonts/Satoshi-Bold.ttf"]
   })
 });
