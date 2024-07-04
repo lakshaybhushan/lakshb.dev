@@ -6,7 +6,6 @@ import { ViewTransitions } from "astro:transitions";
 import PostHog from "../components/posthog.astro";
 import Metadata from "../components/Metadata.astro";
 
-
 interface Props {
 	title: string;
 }
@@ -22,13 +21,13 @@ const { title } = Astro.props;
 			content="Lakshay Bhushan's personal portfolio website made with Astro, React and TailwindCSS"
 		/>
 		<meta name="viewport" content="width=device-width" />
-		
+
 		<Metadata
 			slot="head"
 			title="Lakshay Bhushan"
 			description="Lakshay Bhushan's personal portfolio website made with Astro, React and TailwindCSS"
-			image="./public/og.jpg"
-			canonicalUrl="https://lakshb.dev"
+			image={`${import.meta.env.SITE}/og.png`}
+			canonicalUrl={import.meta.env.SITE}
 			type="website"
 		/>
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
