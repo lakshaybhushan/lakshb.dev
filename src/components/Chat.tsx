@@ -49,7 +49,7 @@ const GroqChat: React.FC = () => {
 	};
 
 	const simulateTypingEffect = (reply: string) => {
-		const typingSpeed = 25;
+		const typingSpeed = 15;
 		let index = -1;
 
 		const typeCharacter = () => {

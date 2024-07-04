@@ -1,12 +1,14 @@
 import type { APIRoute } from "astro";
 import Groq from "groq-sdk";
-import { fyi } from "../../constants/fyi";
+import { getKnowledgeBase } from "../../db/queries";
 
 export const prerender = false;
 
 const groq = new Groq({
 	apiKey: import.meta.env.GROQ_API_KEY,
 });
+
+const aboutMe = await getKnowledgeBase();
 
 export const POST: APIRoute = async ({ request }) => {
 	try {
@@ -16,7 +18,12 @@ export const POST: APIRoute = async ({ request }) => {
 				...history,
 				{
 					role: "system",
-					content: fyi + "Answer should be in first person format.",
+					content: aboutMe,
+				},
+				{
+					role: "assistant",
+					content:
+						"Answer should be in first person format. And It should as concise as possible.",
 				},
 				{ role: "user", content: message },
 			],

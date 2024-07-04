@@ -58,18 +58,18 @@ const jsonLd = {
 		<h1 class="text-[2rem] font-bold tracking-tight text-primary">
 			{post.data.title}
 		</h1>
-		<p class="lead text-base font-medium tracking-tight text-title">
+		<p class="lead text-base font-medium tracking-tight text-title mb-2">
 			{post.data.excerpt}
 		</p>
 
-		<Image
+		<!-- <Image
 			src={post.data.cover}
 			alt={post.data.title}
 			class="mb-2 mt-6 h-auto w-full rounded-lg object-cover"
-		/>
+		/> -->
 
 		<article
-			class="prose prose-sm prose-headings:text-title prose-a:text-primary prose-a:underline-offset-4 prose-blockquote:text-title prose-strong:text-body prose-code:text-body prose-li:marker:text-body prose-img:rounded-md">
+			class="prose prose-sm prose-headings:text-title prose-a:no-underline prose-blockquote:text-title prose-strong:text-body prose-code:text-body prose-li:marker:text-body prose-img:rounded-md">
 			<div class="font-normal text-body">
 				<Content />
 			</div>
