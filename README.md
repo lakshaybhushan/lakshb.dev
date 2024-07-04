@@ -10,4 +10,4 @@
 
 </p>
 
-![GithubBanner](./public/banner.png)
+![GitHubBanner](./public/og.jpg)

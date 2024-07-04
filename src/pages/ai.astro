@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import GroqChat from "../components/Chat.tsx";
+import LakshAI from "../components/LakshAI.tsx";
 import { BsStars } from "react-icons/bs";
 ---
 
@@ -11,7 +11,7 @@ import { BsStars } from "react-icons/bs";
 		</h1>
 		<a href="/upload">
 			<div
-				class="rounded-full bg-emerald-100 px-2.5 py-1.5 text-xs font-medium text-emerald-700 md:hover:bg-emerald-200 transition-all duration-300 ease-in-out">
+				class="rounded-full bg-emerald-100 px-2.5 py-1.5 text-xs font-medium text-emerald-700 transition-all duration-300 ease-in-out md:hover:bg-emerald-200">
 				<BsStars className="-mt-0.5 inline-block text-emerald-700" />
 				<span>Beta</span>
 			</div>
@@ -22,6 +22,6 @@ import { BsStars } from "react-icons/bs";
 		have a chat with my AI to know more about me!
 	</h2>
 	<section class="pt-4">
-		<GroqChat client:load />
+		<LakshAI client:load />
 	</section>
 </Layout>

@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import getNowPlayingItem, { type NowPlayingItem } from "../utils/spotify";
+import { useEffect, useState } from "react";
 import { FaSpotify } from "react-icons/fa6";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -9,9 +8,9 @@ const variants = {
 	exit: { opacity: 0, y: -20 },
 };
 
-const SpotifyNowPlaying: React.FC = () => {
-	const [loading, setLoading] = useState<boolean>(true);
-	const [result, setResult] = useState<NowPlayingItem>({
+const SpotifyNowPlaying = () => {
+	const [loading, setLoading] = useState(true);
+	const [result, setResult] = useState({
 		albumImageUrl: "",
 		artist: "No Artist",
 		isPlaying: false,
@@ -21,10 +20,12 @@ const SpotifyNowPlaying: React.FC = () => {
 
 	const fetchNowPlaying = async () => {
 		try {
-			const songData = await getNowPlayingItem();
-			if (songData) {
-				setResult(songData);
+			const response = await fetch("/api/nowPlaying");
+			if (!response.ok) {
+				throw new Error("Failed to fetch now playing data");
 			}
+			const data = await response.json();
+			setResult(data);
 		} catch (error) {
 			console.error("Error fetching now playing item:", error);
 		} finally {
