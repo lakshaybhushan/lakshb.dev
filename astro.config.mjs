@@ -14,7 +14,7 @@ export default defineConfig({
   integrations: [react(), tailwind(), mdx({
     syntaxHighlight: false,
     rehypePlugins: [rehypeSlug, [rehypePrettyCode, {
-      theme: "houston"
+      theme: "one-dark-pro",
     }]]
   }), sitemap(), robotsTxt()],
   site: "https://lakshb.dev",

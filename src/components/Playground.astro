@@ -1,0 +1,79 @@
+<div
+	class="relative z-0 mt-6 flex h-full min-h-[240px] items-center justify-center rounded-md border border-body/20 bg-body/10 p-0">
+	<slot />
+</div>
+
+<script>
+	interface CopyButtonState {
+		default: string;
+		copied: string;
+	}
+
+	const copyButtonIcons: CopyButtonState = {
+		default: `<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`,
+		copied: `<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>`,
+	};
+
+	const COPY_TIMEOUT = 3000;
+
+	function createCopyButton(): HTMLButtonElement {
+		const copyButton = document.createElement("button");
+		copyButton.className =
+			"copy-code absolute top-2 right-2 bg-body/50 border border-body/20 p-1 rounded transition-all duration-500 ease-in-out";
+		copyButton.innerHTML = copyButtonIcons.default;
+		return copyButton;
+	}
+
+	function wrapCodeBlock(codeBlock: HTMLElement): void {
+		const wrapper = document.createElement("div");
+		wrapper.className = "relative";
+		codeBlock.parentNode?.insertBefore(wrapper, codeBlock);
+		wrapper.appendChild(codeBlock);
+	}
+
+	async function copyCode(
+		block: HTMLElement,
+		button: HTMLButtonElement,
+	): Promise<void> {
+		const code = block.querySelector("code");
+		if (code) {
+			await navigator.clipboard.writeText(code.innerText);
+			button.innerHTML = copyButtonIcons.copied;
+			button.classList.add("bg-emerald-700", "text-emerald-200");
+			button.classList.remove("bg-body/50");
+
+			setTimeout(() => {
+				button.classList.add("opacity-0");
+				setTimeout(() => {
+					button.innerHTML = copyButtonIcons.default;
+					button.classList.remove(
+						"bg-emerald-700",
+						"text-emerald-200",
+						"opacity-0",
+					);
+					button.classList.add("bg-body/50");
+				}, 300);
+			}, COPY_TIMEOUT - 300);
+		}
+	}
+
+	function initializeCodeBlocks(): void {
+		const codeBlocks = Array.from(
+			document.querySelectorAll<HTMLElement>("pre"),
+		);
+
+		codeBlocks.forEach((codeBlock) => {
+			wrapCodeBlock(codeBlock);
+			const copyButton = createCopyButton();
+			codeBlock.setAttribute("tabindex", "0");
+			codeBlock.appendChild(copyButton);
+
+			copyButton.addEventListener("click", () =>
+				copyCode(codeBlock, copyButton),
+			);
+		});
+	}
+
+	// Initialize when the DOM is fully loaded
+	document.addEventListener("DOMContentLoaded", initializeCodeBlocks);
+</script>

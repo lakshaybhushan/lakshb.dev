@@ -13,6 +13,7 @@
 <img src ="https://img.shields.io/badge/Tailwind%20CSS-06B6D4.svg?style=for-the-badge&logo=Tailwind-CSS&logoColor=white">
 <img src ="https://img.shields.io/badge/Framer%20Motion-0055FF.svg?style=for-the-badge&logo=Framer&logoColor=white">
 <img src ="https://img.shields.io/badge/Prettier-F7B93E.svg?style=for-the-badge&logo=Prettier&logoColor=black">
+<img src ="https://img.shields.io/badge/PostHog-000000.svg?style=for-the-badge&logo=PostHog&logoColor=white">
 <img src ="https://img.shields.io/badge/Vercel-000000.svg?style=for-the-badge&logo=Vercel&logoColor=white">
 
 </p>
@@ -34,37 +35,63 @@ Hey there! Thanks for stopping by. This is the source code for my super minimal 
 - **Tailwind CSS**: Styled with Tailwind CSS.
 - **Framer Motion**: Animated with Framer Motion.
 - **Prettier**: Formatted with Prettier.
+- **PostHog**: Used for web analytics.
 - **Vercel**: Deployed with Vercel.
 
 ## Features
 
 - Highly Performant. — [PageSpeed Insights](https://pagespeed.web.dev/analysis/https-lakshb-dev/6g4k4nzoba?form_factor=mobile)
-- Minimal & Responsive Design.
-- Static Site Generation.
-- Interactive Blog Posts.
-- Personal AI Assistant.
-- Spotify Now Playing.
-- View Transitions API
+- Minimal & Responsive Design with Tailwind CSS.
+- Static Site Generation with Astro.
+- Interactive Blog Posts with MDX.
+- Personal AI Assistant (laksh:\\ai).
+- Spotify Now Playing Integration.
+- View Transitions API for smooth page transitions.
 - Framer Motion for micro-interactions.
+- Astro Fonts for optimized fonts loading.
+- Astro Image Component for optimized images.
 - Subtle Light Color Theme that doesn't hurt your eyes.
 - Shows current time in the footer with hand-made svg's showing time of the day.
 - SEO Optimized with OpenGraph, Twitter Meta Tags and Robots.txt.
-- Custom 404 Page.
+- Custom 404 Page with a cute illustration.
+- PostHog & Vercel Analytics for web analytics.
 
-## Env Variables
 
+## Project Structure
+
+```bash
+.
+├── public
+│   ├── docs
+│   ├── fonts
+│   ├── icons
+│   ├── ...svgs
+│   └── og.png
+├── src
+│   ├── assets
+│   ├── components
+│   ├── constants
+│   ├── content
+│   ├── db
+│   ├── layouts
+│   ├── migrations
+│   ├── pages
+│   └── utils
+├── .env
+├── .gitignore
+├── .prettierignore
+├── .prettierrc
+├── astro.config.mjs
+├── bun.lockb
+├── drizzle.config.ts
+├── LICENSE
+├── package.json
+├── README.md
+├── tailwind.config.mjs
+└── tsconfig.json
 ```
-- SITE: Your Deployed Site URL.
-- SPOTIFY_CLIENT_ID: Spotify Client ID.
-- SPOTIFY_CLIENT_SECRET: Spotify Client Secret.
-- SPOTIFY_REFRESH_TOKEN: Spotify Refresh Token.
-- GROQ_API_KEY: Groq API Key.
-- TURSO_CONNECTION_URL: TursoDB Connection URL.
-- TURSO_AUTH_TOKEN: TursoDB Auth Token.
-- UPLOAD_SECRET: Secret for uploading/updating text file to TursoDB. Can be anything you like.
-```
 
-## Development
+## Development Setup
 
 1. Clone the repository.
 
@@ -86,9 +113,20 @@ bun run dev
 
 4. Open [http://localhost:4321](http://localhost:4321) to view it in the browser.
 
-## Contributing
+## Env Variables
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+```
+- SITE: Your Deployed Site URL.
+- SPOTIFY_CLIENT_ID: Spotify Client ID.
+- SPOTIFY_CLIENT_SECRET: Spotify Client Secret.
+- SPOTIFY_REFRESH_TOKEN: Spotify Refresh Token.
+- GROQ_API_KEY: Groq API Key.
+- TURSO_CONNECTION_URL: TursoDB Connection URL.
+- TURSO_AUTH_TOKEN: TursoDB Auth Token.
+- UPLOAD_SECRET: Secret for uploading/updating text file to TursoDB. Can be anything you like.
+```
+
+
 
 ## License
 

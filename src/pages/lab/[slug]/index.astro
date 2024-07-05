@@ -52,23 +52,21 @@ const jsonLd = {
 ---
 
 <LabLayout post={post}>
-	<script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+	<script
+		is:inline
+		type="application/ld+json"
+		set:html={JSON.stringify(jsonLd)}
+	/>
 	<div>
 		<h1 class="text-[2rem] font-bold tracking-tight text-primary">
 			{post.data.title}
 		</h1>
-		<p class="lead text-base font-medium tracking-tight text-title mb-2">
+		<p class="lead mb-2 text-base font-medium tracking-tight text-title">
 			{post.data.excerpt}
 		</p>
 
-		<!-- <Image
-			src={post.data.cover}
-			alt={post.data.title}
-			class="mb-2 mt-6 h-auto w-full rounded-lg object-cover"
-		/> -->
-
 		<article
-			class="prose prose-sm prose-headings:text-title prose-a:no-underline prose-blockquote:text-title prose-strong:text-body prose-code:text-body prose-li:marker:text-body prose-img:rounded-md">
+			class="prose prose-sm prose-headings:text-title prose-a:no-underline prose-blockquote:text-title prose-strong:text-body prose-code:p-1.5 prose-pre:text-wrap prose-pre:rounded-md prose-li:marker:text-body prose-img:rounded-md prose-code:text-[12px]">
 			<div class="font-normal text-body">
 				<Content />
 			</div>
