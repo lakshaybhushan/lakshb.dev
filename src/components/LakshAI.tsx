@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { IoArrowUpSharp } from "react-icons/io5";
 import { marked } from "marked";
 
@@ -20,6 +20,8 @@ const LakshAI: React.FC = () => {
 		[],
 	);
 	const [isTyping, setIsTyping] = useState(false);
+
+	const chatContainerRef = useRef<HTMLDivElement>(null);
 
 	const handleSubmit = async (message: string) => {
 		if (message.trim() === "") return;
@@ -85,9 +87,15 @@ const LakshAI: React.FC = () => {
 
 	const isDisabled = isTyping || message.trim() === "";
 
+	useEffect(() => {
+		if (chatContainerRef.current) {
+			chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+		}
+	}, [messages]);
+
 	return (
 		<div className="flex h-[600px] flex-col text-sm">
-			<div className="flex-1 overflow-y-auto rounded-lg border border-body/20 p-4">
+			<div ref={chatContainerRef} className="flex-1 overflow-y-auto rounded-lg border border-body/20 p-4">
 				{messages.map((message, index) => (
 					<div
 						key={index}

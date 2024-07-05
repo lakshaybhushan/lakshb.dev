@@ -23,10 +23,11 @@ export const POST: APIRoute = async ({ request }) => {
 				{
 					role: "assistant",
 					content:
-						"Answer should be in first person format. And It should as concise as possible.",
+						"Bold the important words in a sentence and answer should be precise and as concise as possible.",
 				},
 				{ role: "user", content: message },
 			],
+			temperature: 0.5,
 			model: "llama3-8b-8192",
 			stream: true,
 		});
