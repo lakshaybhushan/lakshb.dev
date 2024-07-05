@@ -3,6 +3,8 @@ import type { APIRoute } from "astro";
 const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`;
 const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
 
+export const prerender = false;
+
 const client_id = import.meta.env.SPOTIFY_CLIENT_ID as string;
 const client_secret = import.meta.env.SPOTIFY_CLIENT_SECRET as string;
 const refresh_token = import.meta.env.SPOTIFY_REFRESH_TOKEN as string;

@@ -74,6 +74,6 @@
 		});
 	}
 
-	// Initialize when the DOM is fully loaded
+	document.addEventListener('astro:page-load', initializeCodeBlocks);
 	document.addEventListener("DOMContentLoaded", initializeCodeBlocks);
 </script>
