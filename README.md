@@ -13,7 +13,7 @@
 <img src ="https://img.shields.io/badge/Tailwind%20CSS-06B6D4.svg?style=for-the-badge&logo=Tailwind-CSS&logoColor=white">
 <img src ="https://img.shields.io/badge/Framer%20Motion-0055FF.svg?style=for-the-badge&logo=Framer&logoColor=white">
 <img src ="https://img.shields.io/badge/Prettier-F7B93E.svg?style=for-the-badge&logo=Prettier&logoColor=black">
-<img src ="https://img.shields.io/badge/PostHog-000000.svg?style=for-the-badge&logo=PostHog&logoColor=white">
+<img src ="https://img.shields.io/badge/PostHog-F64E00.svg?style=for-the-badge&logo=PostHog&logoColor=white">
 <img src ="https://img.shields.io/badge/Vercel-000000.svg?style=for-the-badge&logo=Vercel&logoColor=white">
 
 </p>
