@@ -18,9 +18,11 @@
 
 </p>
 
-![GitHubBanner](https://lakshb.dev/og.png)
+<a href="https://lakshb.dev" target="_blank" rel="noreferrer noopenner">
+<img src="./public/og.png" alt="lakshb.dev" width="100%">
+</a>
 
-Hey there! Thanks for stopping by. This is the source code for my super minimal personal website, [lakshb.dev](https://lakshb.dev).
+Hi, I'm Lakshay and this is my super minimal yet feature-rich personal website [lakshb.dev](https://lakshb.dev)
 
 ## General Info
 
@@ -28,7 +30,7 @@ Hey there! Thanks for stopping by. This is the source code for my super minimal 
 - **React**: Built with React.
 - **TypeScript**: Written in TypeScript.
 - **MDX**: Used for writing blog posts (Lab) with interactive react elements.
-- **Groq AI**: Used for laksh:\\ai (Lakshay's AI persona).
+- **Groq AI**: Used for `laksh:\\ai` (Lakshay's AI persona).
 - **TursoDB**: Used for storing personal information for AI.
 - **Drizzle ORM**: Used for fetching data from TursoDB.
 - **Spotify API**: Used for fetching now playing song.
@@ -44,7 +46,7 @@ Hey there! Thanks for stopping by. This is the source code for my super minimal 
 - Minimal & Responsive Design with Tailwind CSS.
 - Static Site Generation with Astro.
 - Interactive Blog Posts with MDX.
-- Personal AI Assistant (laksh:\\ai).
+- Personal AI Assistant `laksh:\\ai` with Groq AI.
 - Spotify Now Playing Integration.
 - View Transitions API for smooth page transitions.
 - Framer Motion for micro-interactions.
@@ -55,7 +57,6 @@ Hey there! Thanks for stopping by. This is the source code for my super minimal 
 - SEO Optimized with OpenGraph, Twitter Meta Tags and Robots.txt.
 - Custom 404 Page with a cute illustration.
 - PostHog & Vercel Analytics for web analytics.
-
 
 ## Project Structure
 
@@ -125,8 +126,6 @@ bun run dev
 - TURSO_AUTH_TOKEN: TursoDB Auth Token.
 - UPLOAD_SECRET: Secret for uploading/updating text file to TursoDB. Can be anything you like.
 ```
-
-
 
 ## License
 

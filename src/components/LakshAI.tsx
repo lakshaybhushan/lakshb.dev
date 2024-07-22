@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { IoArrowUpSharp } from "react-icons/io5";
 import { marked } from "marked";
+import { motion, AnimatePresence } from "framer-motion";
 
 const LakshAI: React.FC = () => {
 	const renderer = new marked.Renderer();
@@ -19,9 +20,15 @@ const LakshAI: React.FC = () => {
 	const [messages, setMessages] = useState<{ text: string; isUser: boolean }[]>(
 		[],
 	);
-	const [isTyping, setIsTyping] = useState(false);
+	const [isTyping, setIsTyping] = useState<boolean>(false);
 
 	const chatContainerRef = useRef<HTMLDivElement>(null);
+
+	const messageVariants = {
+		initial: { opacity: 0, y: 20 },
+		animate: { opacity: 1, y: 0 },
+		exit: { opacity: 0, scale: 0.95, transition: { duration: 0.2 } },
+	};
 
 	const handleSubmit = async (message: string) => {
 		if (message.trim() === "") return;
@@ -39,36 +46,56 @@ const LakshAI: React.FC = () => {
 			content: msg.text,
 		}));
 
-		const res = await fetch("/api/chat", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({ message, history }),
-		});
-		const data = await res.json();
-		simulateTypingEffect(data.reply);
+		try {
+			const res = await fetch("/api/chat", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ message, history }),
+			});
+			const data = await res.json();
+			// Small delay to ensure the thinking message has disappeared
+			setTimeout(() => {
+				simulateTypingEffect(data.reply);
+			}, 100);
+		} catch (error) {
+			console.error("Error fetching response:", error);
+			setIsTyping(false);
+			// Optionally, you can add an error message to the chat
+			setMessages((prevMessages) => [
+				...prevMessages,
+				{
+					text: "Sorry, there was an error processing your request.",
+					isUser: false,
+				},
+			]);
+		}
 	};
 
 	const simulateTypingEffect = (reply: string) => {
 		const typingSpeed = 15;
-		let index = -1;
+		let index = 0;
+		let currentText = "";
 
 		const typeCharacter = () => {
 			if (index < reply.length) {
+				currentText += reply.charAt(index);
 				setMessages((prevMessages) => {
 					const lastMessage = prevMessages[prevMessages.length - 1];
+
 					if (lastMessage && !lastMessage.isUser) {
-						lastMessage.text += reply.charAt(index);
-						return [...prevMessages.slice(0, -1), lastMessage];
+						const updatedMessage = {
+							...lastMessage,
+							text: currentText,
+						};
+						return [...prevMessages.slice(0, -1), updatedMessage];
 					} else {
-						return [
-							...prevMessages,
-							{
-								text: reply.charAt(index),
-								isUser: false,
-							},
-						];
+						const newMessage = {
+							text: currentText,
+							isUser: false,
+						};
+						return [...prevMessages, newMessage];
 					}
 				});
 				index++;
@@ -78,7 +105,12 @@ const LakshAI: React.FC = () => {
 			}
 		};
 
-		typeCharacter();
+		setMessages((prevMessages) => [
+			...prevMessages,
+			{ text: "", isUser: false },
+		]);
+
+		setTimeout(typeCharacter, typingSpeed);
 	};
 
 	const handleButtonClick = (text: string) => {
@@ -89,29 +121,65 @@ const LakshAI: React.FC = () => {
 
 	useEffect(() => {
 		if (chatContainerRef.current) {
-			chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+			const scrollToBottom = () => {
+				chatContainerRef.current!.scrollTo({
+					top: chatContainerRef.current!.scrollHeight,
+					behavior: "smooth",
+				});
+			};
+
+			setTimeout(scrollToBottom, 100);
 		}
 	}, [messages]);
 
 	return (
 		<div className="flex h-[600px] flex-col text-sm">
-			<div ref={chatContainerRef} className="flex-1 overflow-y-auto rounded-lg border border-body/20 p-4">
-				{messages.map((message, index) => (
-					<div
-						key={index}
-						className={`flex ${
-							message.isUser ? "justify-end" : "justify-start"
-						} mb-4`}>
-						<div
-							className={`${
-								message.isUser
-									? "rounded-full bg-blue-100 text-blue-700"
-									: "rounded-full bg-green-100 text-emerald-700"
-							} max-w-xs rounded-lg px-2.5 py-1.5`}>
-							<div dangerouslySetInnerHTML={{ __html: marked(message.text) }} />
-						</div>
-					</div>
-				))}
+			<div
+				ref={chatContainerRef}
+				className="flex-1 overflow-y-auto rounded-lg border border-body/20 bg-amber-50/50 p-4">
+				<AnimatePresence initial={false}>
+					{messages.map((message, index) => (
+						<motion.div
+							key={index}
+							variants={messageVariants}
+							initial="initial"
+							animate="animate"
+							exit="exit"
+							transition={{ duration: 0.3, delay: index * 0.1 }}
+							className={`flex ${
+								message.isUser ? "justify-end" : "justify-start"
+							} mb-4`}>
+							<div
+								className={`${
+									message.isUser
+										? "rounded-full bg-blue-100 text-blue-700"
+										: "rounded-full bg-green-100 text-emerald-700"
+								} max-w-xs rounded-lg px-2.5 py-1.5`}>
+								<div
+									dangerouslySetInnerHTML={{ __html: marked(message.text) }}
+								/>
+							</div>
+						</motion.div>
+					))}
+				</AnimatePresence>
+
+				<AnimatePresence>
+					{messages.length === 0 && (
+						<motion.div
+							variants={messageVariants}
+							initial="initial"
+							animate="animate"
+							exit="exit"
+							transition={{ duration: 0.3 }}
+							className="mb-4 flex justify-start">
+							<div className="max-w-xs rounded-lg bg-green-100 px-2.5 py-1.5 text-emerald-700">
+								Hi! I'm{" "}
+								<span className="font-semibold">Lakshay's AI persona</span>. Ask
+								me anything about him or his work. I'll be happy to assist you.
+							</div>
+						</motion.div>
+					)}
+				</AnimatePresence>
 			</div>
 			<div className="flex w-full justify-between gap-2 pt-4 text-xs">
 				<button
@@ -172,11 +240,11 @@ const LakshAI: React.FC = () => {
 			<p className="pt-4 text-sm text-body/80">
 				Everyone makes mistakes, including this AI powered by{" "}
 				<a
-					href="https://llama.meta.com/llama3/"
+					href="https://www.kaggle.com/models/google/gemma-2"
 					target="_blank"
 					rel="noopener noreferrer"
 					className="text-body underline-offset-4 transition duration-150 ease-in-out md:hover:text-primary md:hover:underline">
-					Meta Llama 3
+					Google Gemma 2
 				</a>{" "}
 				and{" "}
 				<a
@@ -184,7 +252,6 @@ const LakshAI: React.FC = () => {
 					target="_blank"
 					rel="noopener noreferrer"
 					className="text-body underline-offset-4 transition duration-150 ease-in-out md:hover:text-primary md:hover:underline">
-					{" "}
 					Groq
 				</a>
 				. <br className="hidden md:block" />

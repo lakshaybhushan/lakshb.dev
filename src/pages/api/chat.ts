@@ -23,12 +23,12 @@ export const POST: APIRoute = async ({ request }) => {
 				{
 					role: "assistant",
 					content:
-						"Bold the important words in a sentence and answer should be precise and as concise as possible.",
+						"Semibold the important words in a sentence and answer should be precise and as concise as possible.",
 				},
 				{ role: "user", content: message },
 			],
 			temperature: 0.5,
-			model: "llama3-8b-8192",
+			model: "gemma2-9b-it",
 			stream: true,
 		});
 
