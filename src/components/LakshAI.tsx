@@ -20,14 +20,15 @@ const LakshAI: React.FC = () => {
 	const [messages, setMessages] = useState<{ text: string; isUser: boolean }[]>(
 		[],
 	);
+	const [isThinking, setIsThinking] = useState<boolean>(false);
 	const [isTyping, setIsTyping] = useState<boolean>(false);
 
 	const chatContainerRef = useRef<HTMLDivElement>(null);
 
 	const messageVariants = {
-		initial: { opacity: 0, y: 20 },
+		initial: { opacity: 0, y: 10 },
 		animate: { opacity: 1, y: 0 },
-		exit: { opacity: 0, scale: 0.95, transition: { duration: 0.2 } },
+		exit: { opacity: 0, scale: 0.98, transition: { duration: 0.1 } },
 	};
 
 	const handleSubmit = async (message: string) => {
@@ -46,6 +47,11 @@ const LakshAI: React.FC = () => {
 			content: msg.text,
 		}));
 
+		// Set a timeout to show "thinking..." after 2 seconds
+		const thinkingTimeout = setTimeout(() => {
+			setIsThinking(true);
+		}, 2000);
+
 		try {
 			const res = await fetch("/api/chat", {
 				method: "POST",
@@ -55,6 +61,11 @@ const LakshAI: React.FC = () => {
 				body: JSON.stringify({ message, history }),
 			});
 			const data = await res.json();
+
+			// Clear the thinking timeout
+			clearTimeout(thinkingTimeout);
+			setIsThinking(false);
+
 			// Small delay to ensure the thinking message has disappeared
 			setTimeout(() => {
 				simulateTypingEffect(data.reply);
@@ -62,6 +73,8 @@ const LakshAI: React.FC = () => {
 		} catch (error) {
 			console.error("Error fetching response:", error);
 			setIsTyping(false);
+			setIsThinking(false);
+			clearTimeout(thinkingTimeout);
 			// Optionally, you can add an error message to the chat
 			setMessages((prevMessages) => [
 				...prevMessages,
@@ -145,7 +158,7 @@ const LakshAI: React.FC = () => {
 							initial="initial"
 							animate="animate"
 							exit="exit"
-							transition={{ duration: 0.3, delay: index * 0.1 }}
+							transition={{ duration: 0.2, delay: index * 0.05 }} // Faster animation
 							className={`flex ${
 								message.isUser ? "justify-end" : "justify-start"
 							} mb-4`}>
@@ -161,6 +174,20 @@ const LakshAI: React.FC = () => {
 							</div>
 						</motion.div>
 					))}
+					{isThinking && (
+						<motion.div
+							key="thinking"
+							variants={messageVariants}
+							initial="initial"
+							animate="animate"
+							exit="exit"
+							transition={{ duration: 0.2 }}
+							className="mb-4 flex justify-start">
+							<div className="max-w-xs rounded-lg bg-green-100 px-2.5 py-1.5 text-emerald-700">
+								Thinking...
+							</div>
+						</motion.div>
+					)}
 				</AnimatePresence>
 
 				<AnimatePresence>
@@ -240,11 +267,11 @@ const LakshAI: React.FC = () => {
 			<p className="pt-4 text-sm text-body/80">
 				Everyone makes mistakes, including this AI powered by{" "}
 				<a
-					href="https://www.kaggle.com/models/google/gemma-2"
+					href="https://llama.meta.com/"
 					target="_blank"
 					rel="noopener noreferrer"
 					className="text-body underline-offset-4 transition duration-150 ease-in-out md:hover:text-primary md:hover:underline">
-					Google Gemma 2
+					Meta Llama 3.1
 				</a>{" "}
 				and{" "}
 				<a
