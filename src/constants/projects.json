@@ -1,8 +1,8 @@
 [
 	{
 		"id": 1,
-		"title": "Nextjs + Notion Waitlist Template",
-		"description": "A Simple Next.js Waitlist Template with Notion as CMS",
+		"title": "Next.js + Notion Waitlist Template",
+		"description": "A simple Next.js + Notion as CMS waitlist template",
 		"link": "https://nextjs-notion-waitlist.vercel.app/"
 	},
 	{
