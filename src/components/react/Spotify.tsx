@@ -41,7 +41,7 @@ const SpotifyNowPlaying = () => {
 		}, 3500);
 
 		return () => {
-			clearInterval(pollingInterval);
+			clearInterval(pollingInterval as NodeJS.Timeout);
 		};
 	}, []);
 

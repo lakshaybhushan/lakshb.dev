@@ -23,6 +23,7 @@
     "astro": "4.16.1",
     "astro-font": "^0.1.81",
     "astro-robots-txt": "^1.0.0",
+    "clsx": "^2.1.1",
     "dotenv": "^16.4.5",
     "drizzle-orm": "^0.34.1",
     "framer-motion": "^11.11.8",
