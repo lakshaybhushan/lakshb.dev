@@ -48,7 +48,7 @@ interface NowPlayingItem {
 }
 
 const getAccessToken = async (): Promise<string> => {
-	const basic = btoa(`${client_id}:${client_secret}`);
+	const basic = Buffer.from(`${client_id}:${client_secret}`).toString('base64');
 
 	const params = new URLSearchParams();
 	params.append("grant_type", "refresh_token");
