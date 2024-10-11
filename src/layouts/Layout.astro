@@ -3,7 +3,7 @@ import { AstroFont } from "astro-font";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import { ViewTransitions } from "astro:transitions";
-import PostHog from "../components/PostHog.astro";
+// import PostHog from "../components/PostHog.astro";
 import Metadata from "../components/Metadata.astro";
 
 interface Props {
@@ -33,7 +33,7 @@ const { title } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
-		<PostHog />
+		<!-- <PostHog /> -->
 		<AstroFont
 			config={[
 				{

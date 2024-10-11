@@ -2,7 +2,7 @@
 import { AstroFont } from "astro-font";
 import Footer from "../components/Footer.astro";
 import { ViewTransitions } from "astro:transitions";
-import PostHog from "../components/PostHog.astro";
+// import PostHog from "../components/PostHog.astro";
 import LabNav from "../components/LabNav.astro";
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
@@ -52,7 +52,7 @@ if (!post) {
 		/>
 
 		<title>Lab • {post.data.title}</title>
-		<PostHog />
+		<!-- <PostHog /> -->
 		<AstroFont
 			config={[
 				{
