@@ -1,11 +1,11 @@
 import type { APIRoute } from "astro";
-import Groq from "groq-sdk";
+import OpenAI from "openai";
 import { getKnowledgeBase } from "../../db/queries";
 
 export const prerender = false;
 
-const groq = new Groq({
-	apiKey: import.meta.env.GROQ_API_KEY,
+const openai = new OpenAI({
+	apiKey: import.meta.env.OPENAI_API_KEY,
 });
 
 const aboutMe = await getKnowledgeBase();
@@ -13,7 +13,7 @@ const aboutMe = await getKnowledgeBase();
 export const POST: APIRoute = async ({ request }) => {
 	try {
 		const { message, history } = await request.json();
-		const chatCompletion = await groq.chat.completions.create({
+		const chatCompletion = await openai.chat.completions.create({
 			messages: [
 				...history,
 				{
@@ -28,7 +28,7 @@ export const POST: APIRoute = async ({ request }) => {
 				{ role: "user", content: message },
 			],
 			temperature: 0.5,
-			model: "llama-3.1-8b-instant",
+			model: "gpt-4o-mini",
 			stream: true,
 		});
 

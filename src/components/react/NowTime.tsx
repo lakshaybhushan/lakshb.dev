@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Suspense } from "react";
 import moment from "moment-timezone";
-import { getTimeOfDay } from "../utils/getTime";
+import { getTimeOfDay } from "../../utils/getTime";
 import { motion, AnimatePresence } from "framer-motion";
 
 const NowTime: React.FC = () => {

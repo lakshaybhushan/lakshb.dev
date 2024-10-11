@@ -26,9 +26,39 @@ const LakshAI: React.FC = () => {
 	const chatContainerRef = useRef<HTMLDivElement>(null);
 
 	const messageVariants = {
-		initial: { opacity: 0, y: 10 },
-		animate: { opacity: 1, y: 0 },
-		exit: { opacity: 0, scale: 0.98, transition: { duration: 0.1 } },
+		initial: { opacity: 0, y: 20, scale: 0.9 },
+		animate: {
+			opacity: 1,
+			y: 0,
+			scale: 1,
+			transition: { type: "spring", stiffness: 260, damping: 20 },
+		},
+		exit: {
+			opacity: 0,
+			scale: 0.8,
+			transition: { duration: 0.2 },
+		},
+	};
+
+	const greetingVariants = {
+		initial: { opacity: 0, y: 50, scale: 0.7 },
+		animate: {
+			opacity: 1,
+			y: 0,
+			scale: 1,
+			transition: {
+				type: "spring",
+				stiffness: 200,
+				damping: 20,
+				delay: 0.2,
+			},
+		},
+		exit: {
+			opacity: 0,
+			y: -20,
+			scale: 0.9,
+			transition: { duration: 0.3 },
+		},
 	};
 
 	const handleSubmit = async (message: string) => {
@@ -150,7 +180,7 @@ const LakshAI: React.FC = () => {
 			<div
 				ref={chatContainerRef}
 				className="flex-1 overflow-y-auto rounded-lg border border-body/20 bg-amber-50/50 p-4">
-				<AnimatePresence initial={false}>
+				<AnimatePresence initial={false} mode="popLayout">
 					{messages.map((message, index) => (
 						<motion.div
 							key={index}
@@ -158,7 +188,6 @@ const LakshAI: React.FC = () => {
 							initial="initial"
 							animate="animate"
 							exit="exit"
-							transition={{ duration: 0.2, delay: index * 0.05 }} // Faster animation
 							className={`flex ${
 								message.isUser ? "justify-end" : "justify-start"
 							} mb-4`}>
@@ -181,7 +210,6 @@ const LakshAI: React.FC = () => {
 							initial="initial"
 							animate="animate"
 							exit="exit"
-							transition={{ duration: 0.2 }}
 							className="mb-4 flex justify-start">
 							<div className="max-w-xs rounded-lg bg-green-100 px-2.5 py-1.5 text-emerald-700">
 								Thinking...
@@ -193,11 +221,10 @@ const LakshAI: React.FC = () => {
 				<AnimatePresence>
 					{messages.length === 0 && (
 						<motion.div
-							variants={messageVariants}
+							variants={greetingVariants}
 							initial="initial"
 							animate="animate"
 							exit="exit"
-							transition={{ duration: 0.3 }}
 							className="mb-4 flex justify-start">
 							<div className="max-w-xs rounded-lg bg-green-100 px-2.5 py-1.5 text-emerald-700">
 								Hi! I'm{" "}
@@ -246,7 +273,7 @@ const LakshAI: React.FC = () => {
 						value={message}
 						onChange={(e) => setMessage(e.target.value)}
 						disabled={isTyping}
-						className={`flex-1 rounded-l-full border border-r-0 border-body/20 bg-bgColor px-4 py-2.5 placeholder:text-body/50 focus:outline-none focus:ring-0 active:focus:outline-none ${
+						className={`flex-1 rounded-l-full border border-r-0 border-body/20 bg-amber-50/50 px-4 py-2.5 placeholder:text-body/50 focus:outline-none focus:ring-0 active:focus:outline-none ${
 							isTyping ? "cursor-not-allowed" : "cursor-auto"
 						}`}
 						placeholder="Ask about me or my work!"
@@ -267,19 +294,11 @@ const LakshAI: React.FC = () => {
 			<p className="pt-4 text-sm text-body/80">
 				Everyone makes mistakes, including this AI powered by{" "}
 				<a
-					href="https://llama.meta.com/"
+					href="https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/"
 					target="_blank"
 					rel="noopener noreferrer"
 					className="text-body underline-offset-4 transition duration-150 ease-in-out md:hover:text-primary md:hover:underline">
-					Meta Llama 3.1
-				</a>{" "}
-				and{" "}
-				<a
-					href="https://groq.com/"
-					target="_blank"
-					rel="noopener noreferrer"
-					className="text-body underline-offset-4 transition duration-150 ease-in-out md:hover:text-primary md:hover:underline">
-					Groq
+					OpenAI GPT-4o mini
 				</a>
 				. <br className="hidden md:block" />
 				Make sure to double-check important information.

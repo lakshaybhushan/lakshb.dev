@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import { RiArrowRightUpLine } from "react-icons/ri";
 import { PiLightbulbFill } from "react-icons/pi";
-import ProjectCard from "../components/Card.tsx";
+import ProjectCard from "../components/react/Card.tsx";
 import projectsData from "../constants/projects.json";
 
 const projects = projectsData;
@@ -30,7 +30,7 @@ const projects = projectsData;
 			ideas.
 		</p>
 
-		<div class="flex w-fit flex-col items-start gap-0.5 pt-4 tracking-tight">
+		<div class="flex w-fit flex-col items-start gap-2 pt-4 tracking-tight">
 			<a
 				href="/resume"
 				target="_self"
