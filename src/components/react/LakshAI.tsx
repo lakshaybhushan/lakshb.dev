@@ -6,12 +6,12 @@ import { motion, AnimatePresence } from "framer-motion";
 const LakshAI: React.FC = () => {
 	const renderer = new marked.Renderer();
 
-	renderer.code = (code, language) => {
-		const languageClass = language ? `language-${language}` : "";
-		return `<pre class="p-1.5 overflow-auto"><code class="${languageClass} text-slate-700 whitespace-pre-wrap break-words text-xs">${code}</code></pre>`;
+	renderer.code = ({ text, lang }) => {
+		const languageClass = lang ? `language-${lang}` : "";
+		return `<pre class="p-1.5 overflow-auto"><code class="${languageClass} text-slate-700 whitespace-pre-wrap break-words text-xs">${text}</code></pre>`;
 	};
 
-	renderer.link = (href, _title, text) =>
+	renderer.link = ({ href, text }) =>
 		`<a href="${href}" target="_blank" rel="noopener noreferrer" class="text-indigo-700 underline underline-offset-2 transition duration-150 ease-in-out hover:text-black hover:underline">${text}</a>`;
 
 	marked.setOptions({ renderer });
