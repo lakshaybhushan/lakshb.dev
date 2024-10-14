@@ -1,9 +1,14 @@
-import React, { useState, useEffect, useRef } from "react";
-import { IoArrowUpSharp } from "react-icons/io5";
 import { marked } from "marked";
+import { useChat } from "ai/react";
+import { useEffect, useRef } from "react";
+import { IoArrowUpSharp } from "react-icons/io5";
 import { motion, AnimatePresence } from "framer-motion";
+import {
+	messageVariants,
+	greetingVariants,
+} from "../../utils/animationVariants";
 
-const LakshAI: React.FC = () => {
+export default function LakshAI() {
 	const renderer = new marked.Renderer();
 
 	renderer.code = ({ text, lang }) => {
@@ -16,151 +21,16 @@ const LakshAI: React.FC = () => {
 
 	marked.setOptions({ renderer });
 
-	const [message, setMessage] = useState("");
-	const [messages, setMessages] = useState<{ text: string; isUser: boolean }[]>(
-		[],
-	);
-	const [isThinking, setIsThinking] = useState<boolean>(false);
-	const [isTyping, setIsTyping] = useState<boolean>(false);
+	const {
+		messages,
+		input,
+		handleInputChange,
+		handleSubmit,
+		isLoading,
+		setInput,
+	} = useChat();
 
 	const chatContainerRef = useRef<HTMLDivElement>(null);
-
-	const messageVariants = {
-		initial: { opacity: 0, y: 20, scale: 0.9 },
-		animate: {
-			opacity: 1,
-			y: 0,
-			scale: 1,
-			transition: { type: "spring", stiffness: 260, damping: 20 },
-		},
-		exit: {
-			opacity: 0,
-			scale: 0.8,
-			transition: { duration: 0.2 },
-		},
-	};
-
-	const greetingVariants = {
-		initial: { opacity: 0, y: 50, scale: 0.7 },
-		animate: {
-			opacity: 1,
-			y: 0,
-			scale: 1,
-			transition: {
-				type: "spring",
-				stiffness: 200,
-				damping: 20,
-				delay: 0.2,
-			},
-		},
-		exit: {
-			opacity: 0,
-			y: -20,
-			scale: 0.9,
-			transition: { duration: 0.3 },
-		},
-	};
-
-	const handleSubmit = async (message: string) => {
-		if (message.trim() === "") return;
-
-		const userMessage = {
-			text: message,
-			isUser: true,
-		};
-		setMessages((prevMessages) => [...prevMessages, userMessage]);
-		setMessage("");
-		setIsTyping(true);
-
-		const history = messages.map((msg) => ({
-			role: msg.isUser ? "user" : "assistant",
-			content: msg.text,
-		}));
-
-		// Set a timeout to show "thinking..." after 2 seconds
-		const thinkingTimeout = setTimeout(() => {
-			setIsThinking(true);
-		}, 2000);
-
-		try {
-			const res = await fetch("/api/chat", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({ message, history }),
-			});
-			const data = await res.json();
-
-			// Clear the thinking timeout
-			clearTimeout(thinkingTimeout);
-			setIsThinking(false);
-
-			// Small delay to ensure the thinking message has disappeared
-			setTimeout(() => {
-				simulateTypingEffect(data.reply);
-			}, 100);
-		} catch (error) {
-			console.error("Error fetching response:", error);
-			setIsTyping(false);
-			setIsThinking(false);
-			clearTimeout(thinkingTimeout);
-			// Optionally, you can add an error message to the chat
-			setMessages((prevMessages) => [
-				...prevMessages,
-				{
-					text: "Sorry, there was an error processing your request.",
-					isUser: false,
-				},
-			]);
-		}
-	};
-
-	const simulateTypingEffect = (reply: string) => {
-		const typingSpeed = 15;
-		let index = 0;
-		let currentText = "";
-
-		const typeCharacter = () => {
-			if (index < reply.length) {
-				currentText += reply.charAt(index);
-				setMessages((prevMessages) => {
-					const lastMessage = prevMessages[prevMessages.length - 1];
-
-					if (lastMessage && !lastMessage.isUser) {
-						const updatedMessage = {
-							...lastMessage,
-							text: currentText,
-						};
-						return [...prevMessages.slice(0, -1), updatedMessage];
-					} else {
-						const newMessage = {
-							text: currentText,
-							isUser: false,
-						};
-						return [...prevMessages, newMessage];
-					}
-				});
-				index++;
-				setTimeout(typeCharacter, typingSpeed);
-			} else {
-				setIsTyping(false);
-			}
-		};
-
-		setMessages((prevMessages) => [
-			...prevMessages,
-			{ text: "", isUser: false },
-		]);
-
-		setTimeout(typeCharacter, typingSpeed);
-	};
-
-	const handleButtonClick = (text: string) => {
-		handleSubmit(text);
-	};
-
-	const isDisabled = isTyping || message.trim() === "";
 
 	useEffect(() => {
 		if (chatContainerRef.current) {
@@ -175,47 +45,41 @@ const LakshAI: React.FC = () => {
 		}
 	}, [messages]);
 
+	const handleButtonClick = (text: string) => {
+		setInput(text);
+	};
+
+	const isDisabled = isLoading || input.trim() === "";
+
 	return (
 		<div className="flex h-[600px] flex-col text-sm">
 			<div
 				ref={chatContainerRef}
 				className="flex-1 overflow-y-auto rounded-lg border border-body/20 bg-amber-50/50 p-4">
 				<AnimatePresence initial={false} mode="popLayout">
-					{messages.map((message, index) => (
+					{messages.map((m) => (
 						<motion.div
-							key={index}
+							key={m.id}
 							variants={messageVariants}
 							initial="initial"
 							animate="animate"
 							exit="exit"
 							className={`flex ${
-								message.isUser ? "justify-end" : "justify-start"
+								m.role === "user" ? "justify-end" : "justify-start"
 							} mb-4`}>
 							<div
 								className={`${
-									message.isUser
+									m.role === "user"
 										? "rounded-full bg-blue-100 text-blue-700"
 										: "rounded-full bg-green-100 text-emerald-700"
 								} max-w-xs rounded-lg px-2.5 py-1.5`}>
 								<div
-									dangerouslySetInnerHTML={{ __html: marked(message.text) }}
+									dangerouslySetInnerHTML={{ __html: marked(m.content) }}
+									className="antialiased"
 								/>
 							</div>
 						</motion.div>
 					))}
-					{isThinking && (
-						<motion.div
-							key="thinking"
-							variants={messageVariants}
-							initial="initial"
-							animate="animate"
-							exit="exit"
-							className="mb-4 flex justify-start">
-							<div className="max-w-xs rounded-lg bg-green-100 px-2.5 py-1.5 text-emerald-700">
-								Thinking...
-							</div>
-						</motion.div>
-					)}
 				</AnimatePresence>
 
 				<AnimatePresence>
@@ -239,42 +103,35 @@ const LakshAI: React.FC = () => {
 				<button
 					onClick={() => handleButtonClick("What is your design philosophy?")}
 					className="rounded-lg bg-rose-100 px-2.5 py-1.5 text-rose-700 transition duration-300 ease-in-out md:hover:scale-95 md:hover:bg-rose-200 md:hover:text-rose-900"
-					disabled={isTyping}>
+					disabled={isLoading}>
 					What is your design philosophy?
 				</button>
 				<button
 					onClick={() => handleButtonClick("Are you available for hire?")}
 					className="rounded-lg bg-violet-100 px-2.5 py-1.5 text-violet-700 transition duration-300 ease-in-out md:hover:scale-95 md:hover:bg-violet-200 md:hover:text-violet-900"
-					disabled={isTyping}>
+					disabled={isLoading}>
 					Are you available for hire?
 				</button>
 				<button
 					onClick={() =>
 						handleButtonClick(
-							"How much time does it takes for you to design & code a website?",
+							"How much time does it take for you to design & code a website?",
 						)
 					}
 					className="rounded-lg bg-amber-100 px-2.5 py-1.5 text-amber-700 transition duration-300 ease-in-out md:hover:scale-95 md:hover:bg-amber-200 md:hover:text-amber-900"
-					disabled={isTyping}>
-					How much time does it takes for you to design & code a website?
+					disabled={isLoading}>
+					How much time does it take for you to design & code a website?
 				</button>
 			</div>
-			<form
-				onSubmit={(e) => {
-					e.preventDefault();
-					handleSubmit(message);
-				}}
-				className="flex-none pt-4">
+			<form onSubmit={handleSubmit} className="flex-none pt-4">
 				<div className="flex">
 					<input
 						type="text"
-						id="message"
-						name="message"
-						value={message}
-						onChange={(e) => setMessage(e.target.value)}
-						disabled={isTyping}
+						value={input}
+						onChange={handleInputChange}
+						disabled={isLoading}
 						className={`flex-1 rounded-l-full border border-r-0 border-body/20 bg-amber-50/50 px-4 py-2.5 placeholder:text-body/50 focus:outline-none focus:ring-0 active:focus:outline-none ${
-							isTyping ? "cursor-not-allowed" : "cursor-auto"
+							isLoading ? "cursor-not-allowed" : "cursor-auto"
 						}`}
 						placeholder="Ask about me or my work!"
 					/>
@@ -283,7 +140,7 @@ const LakshAI: React.FC = () => {
 						disabled={isDisabled}
 						className="rounded-r-full border border-l-0 border-body/20 px-1.5 focus:outline-none focus:ring-0 active:focus:outline-none">
 						<div
-							className={`rounded-full p-2 ${isDisabled ? "transition duration-300 ease-in-out md:bg-hoverColor" : "bg-primary transition duration-300 ease-in-out md:hover:scale-95"}`}>
+							className={`rounded-full p-2 ${isDisabled ? "bg-hoverColor transition duration-300 ease-in-out" : "bg-primary transition duration-300 ease-in-out md:hover:scale-95"}`}>
 							<IoArrowUpSharp
 								className={`${isDisabled ? "text-primary transition duration-150 ease-linear" : "text-bgColor transition duration-150 ease-linear"}`}
 							/>
@@ -299,12 +156,17 @@ const LakshAI: React.FC = () => {
 					rel="noopener noreferrer"
 					className="text-body underline-offset-4 transition duration-150 ease-in-out md:hover:text-primary md:hover:underline">
 					OpenAI GPT-4o mini
+				</a>{" "}
+				and{" "}
+				<a
+					href="https://sdk.vercel.ai/"
+					target="_blank"
+					rel="noopener noreferrer"
+					className="text-body underline-offset-4 transition duration-150 ease-in-out md:hover:text-primary md:hover:underline">
+					Vercel AI SDK
 				</a>
-				. <br className="hidden md:block" />
-				Make sure to double-check important information.
+				. Make sure to double-check important information.
 			</p>
 		</div>
 	);
-};
-
-export default LakshAI;
+}
